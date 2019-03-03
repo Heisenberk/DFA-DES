@@ -24,7 +24,7 @@ int main(){
 
 	// etape 1 : trouver R15 à partir du chiffré juste
 	uint64_t chiffre_juste = 0x670994D1365D5EAD; //mon chiffre juste
-	uint32_t R15 = get_R15(chiffre_juste);
+	uint32_t R15_chiffre_juste = get_R15(chiffre_juste);
 
 	// etape 2 : trouver les R15 à partir des chiffrés faux
 	uint64_t chiffre_faux[32] = {
@@ -62,13 +62,15 @@ int main(){
 		0x671D9491365C5E3D,
 	};
 
-	int i;
+	int i; uint32_t R15_chiffre_faux;
 	for(i=0;i<32;i++){
 		printf_uint64_t_hexa(chiffre_faux[i]);
-		R15 = 0;
-		R15 = get_R15(chiffre_faux[i]);
+		R15_chiffre_faux = 0;
+		R15_chiffre_faux = get_R15(chiffre_faux[i]);
 		printf(": 0x");
-		printf_uint32_t_hexa(R15);
+		printf_uint32_t_hexa(R15_chiffre_faux);
+		printf(": ");
+		printf_uint32_t_binary(R15_chiffre_juste ^ R15_chiffre_faux);
 		printf("\n");
 	}
 
