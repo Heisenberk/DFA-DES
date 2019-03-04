@@ -36,6 +36,7 @@ int main(){
 	CU_add_test(suite2, "test_expand", test_expand);
 	CU_add_test(suite2, "test_process_S_box", test_process_S_box);
 	CU_add_test(suite2, "test_permutation_inner_function", test_permutation_inner_function);
+	CU_add_test(suite2, "test_permutation_inv_inner_function", test_permutation_inv_inner_function);
 	CU_add_test(suite2, "test_inner_function", test_inner_function);
 
 	CU_pSuite suite3 = CU_add_suite("Test Feistel", setup,teardown);

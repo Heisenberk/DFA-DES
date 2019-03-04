@@ -128,6 +128,17 @@ int permutation_inner_function(uint32_t* output, uint32_t input){
 	return 0;
 }
 
+int permutation_inv_inner_function(uint32_t* output, uint32_t input){
+	int i;
+	*output=0x00;
+	for(i=0;i<32;i++){
+		uint8_t bit=get_bit_uint32_t_most(input, i+1);
+		if (set_bit_uint32_t(output, bit, 33-P[i]))
+			return des_errno=ERR_BIT, 1;
+	}
+	return 0;
+}
+
 int inner_function(SUB_KEY sub_key, uint32_t* R){
 
 	// calcul de E(Ri)
@@ -150,4 +161,6 @@ int inner_function(SUB_KEY sub_key, uint32_t* R){
 	*R = final;
 	return 0;
 }
+
+
 

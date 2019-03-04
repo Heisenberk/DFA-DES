@@ -218,25 +218,27 @@ int decryption_des(uint64_t* data, uint64_t* key_64){
 }
 
 uint32_t get_R15(uint64_t cipher){
-	/*printf("AVANT DECRYPTION : \n");
-	printf_uint64_t_hexa(cipher);
-	printf("\n");*/
-
 	// permutation initiale 
 	if(process_permutation(&cipher, IP)) 
 		return des_errno=ERR_BIT, 1;
-
-	/*printf("APRES PERMUTATION : \n");
-	printf_uint64_t_hexa(cipher);
-	printf("\n");*/
 
 	// division en L0 et R0
 	uint32_t L16, R16;
 	if(build_L0_R0(cipher, &L16, &R16)) 
 		return des_errno=ERR_BIT, 1;
-	/*printf("R15 = ");
-	printf_uint32_t_hexa(L16);
-	printf("\n");*/
 
 	return L16;
+}
+
+uint32_t get_R16(uint64_t cipher){
+	// permutation initiale 
+	if(process_permutation(&cipher, IP)) 
+		return des_errno=ERR_BIT, 1;
+
+	// division en L0 et R0
+	uint32_t L16, R16;
+	if(build_L0_R0(cipher, &L16, &R16)) 
+		return des_errno=ERR_BIT, 1;
+
+	return R16;
 }

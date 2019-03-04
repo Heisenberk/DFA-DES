@@ -41,6 +41,17 @@ void test_permutation_inner_function(){
 	CU_ASSERT_EQUAL(output, 0x234aa9bb);
 }
 
+void test_permutation_inv_inner_function(){
+	uint32_t input = 0x5c82b597;
+	uint32_t input_find;
+	uint32_t output, output_find;
+	output_find=0x234aa9bb;
+	CU_ASSERT_EQUAL(permutation_inner_function(&output, input),0);
+	CU_ASSERT_EQUAL(output, output_find);
+	CU_ASSERT_EQUAL(permutation_inv_inner_function(&input_find, output),0);
+	CU_ASSERT_EQUAL(input_find, input);
+}
+
 void test_inner_function(){
 	uint32_t R = 0xf0aaf0aa;
 	SUB_KEY k;

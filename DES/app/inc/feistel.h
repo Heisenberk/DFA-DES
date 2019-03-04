@@ -13,5 +13,6 @@ int encryption_des(uint64_t* data, uint64_t* key_64);
 int decryption_des(uint64_t* data, uint64_t* key_64);
 
 uint32_t get_R15(uint64_t cipher);
+uint32_t get_R16(uint64_t cipher);
 
 #endif
