@@ -31,13 +31,17 @@ int main(){
 	CU_add_test(suite1, "test_init_C0_D0", test_init_C0_D0);
 	CU_add_test(suite1, "test_process_Ci_Di", test_process_Ci_Di);
 	CU_add_test(suite1, "test_generate_sub_key", test_generate_sub_key);
+	CU_add_test(suite1, "test_build_C16_D16", test_build_C16_D16);
+	CU_add_test(suite1, "test_build_K56", test_build_K56);
 
 	CU_pSuite suite2 = CU_add_suite("Test Inner Function", setup,teardown);
 	CU_add_test(suite2, "test_expand", test_expand);
 	CU_add_test(suite2, "test_process_S_box", test_process_S_box);
+	CU_add_test(suite2, "test_process_S_box_particular", test_process_S_box_particular);
 	CU_add_test(suite2, "test_permutation_inner_function", test_permutation_inner_function);
 	CU_add_test(suite2, "test_permutation_inv_inner_function", test_permutation_inv_inner_function);
 	CU_add_test(suite2, "test_inner_function", test_inner_function);
+	CU_add_test(suite2, "test_get_input_sbox", test_get_input_sbox);
 
 	CU_pSuite suite3 = CU_add_suite("Test Feistel", setup,teardown);
 	CU_add_test(suite3, "test_process_permutation", test_process_permutation);
@@ -48,6 +52,7 @@ int main(){
 	CU_add_test(suite3, "test_encryption_decryption_K1", test_encryption_decryption_K1);
 	CU_add_test(suite3, "test_get_R15_exemple", test_get_R15_exemple);
 	CU_add_test(suite3, "test_get_R15_attaque", test_get_R15_attaque);
+	CU_add_test(suite3, "test_get_R16_exemple", test_get_R16_exemple);
 
 	CU_basic_set_mode(CU_BRM_VERBOSE);
 	CU_basic_run_tests();

@@ -5,6 +5,7 @@
 #include "../inc/errors.h"
 #include "../inc/inner_function.h"
 #include "../inc/manip_bits.h"
+#include "../inc/attack.h"
 
 int E[] = { 32, 1, 2, 3, 4, 5,
             4, 5, 6, 7, 8, 9,
@@ -160,6 +161,198 @@ int inner_function(SUB_KEY sub_key, uint32_t* R){
 			return des_errno=ERR_BIT, 1;
 	*R = final;
 	return 0;
+}
+
+int get_input_sbox(uint8_t output, int S[4][16], uint8_t* input1, uint8_t* input2, uint8_t* input3, uint8_t* input4){
+	int tour=0;
+	uint8_t input; uint8_t i,j; uint8_t bit;
+	input=0;
+	for(i=0;i<4;i++){
+		for(j=0;j<16;j++){
+			input=0;
+			if (S[i][j]==output) {
+				bit=get_bit_uint8_t(i,2);
+				if (set_bit_uint8_t(&input, bit, 6)) 
+					return 1;
+				bit=get_bit_uint8_t(i,1);
+				if (set_bit_uint8_t(&input, bit, 1))
+					return 1;
+
+				bit=get_bit_uint8_t(j,4);
+				if (set_bit_uint8_t(&input, bit, 5))
+					return 1;
+				bit=get_bit_uint8_t(j,3);
+				if (set_bit_uint8_t(&input, bit, 4))
+					return 1;
+				bit=get_bit_uint8_t(j,2);
+				if (set_bit_uint8_t(&input, bit, 3))
+					return 1;
+				bit=get_bit_uint8_t(j,1);
+				if (set_bit_uint8_t(&input, bit, 2))
+					return 1;
+				if (tour==0) *input1=input;
+				else if (tour==1) *input2=input;
+				else if (tour==2) *input3=input;
+				else if (tour==3) *input4=input;
+				tour++;
+			}	
+		}
+	}
+	return 0;
+}
+
+int compte_possibilites_S1(uint8_t sortie){
+	int i,j; 
+	int compteur=0;
+	for(i=0;i<4;i++){
+		for(j=0;j<16;j++){
+			if (S1[i][j]==sortie) compteur++;
+		}
+	}
+	return compteur;
+}
+
+uint8_t process_S_box_particular(uint8_t input, int S[4][16]){
+	//87654321
+	uint8_t bit1, bit2;
+	bit1=get_bit_uint8_t(input, 6);
+	bit2=get_bit_uint8_t(input, 1);
+	int x, y;
+	x=bit1; x<<=1; x|=bit2;
+	y=input; y<<=1; y>>=2;
+	return (uint8_t)S[x][y];
+
+}
+
+void calcul_boite_s1_inv (DATA *data){
+	int j;
+	uint8_t input1, input2, input3, input4; 
+	uint8_t input5, input6, input7, input8;
+	uint8_t k16_1, k16_2, k16_3, k16_4;
+	SUB_KEY k;
+	uint64_t input_chiffre_faux;
+	int i=0; uint32_t R15_chiffre_faux;
+	uint32_t perm;
+	int compteur=32;
+	uint32_t result_output_sbox_faux;
+
+	uint64_t expand_R15, expand_R15_faux;
+	uint8_t bits6_expand_R15=0; uint8_t bit6_expand_R15_faux;
+	expand(&expand_R15, data->chiffre_juste.R15); //expand_R15=E(R15)
+
+	printf("E(R15)=");
+	printf_uint64_t_hexa(expand_R15);
+	printf("\n");
+
+	int l=6; int u; uint8_t bit;
+	for(u=48;u>=43;u--){ //pour otenir les bits 1 a 6 (boiteS1)
+		bit=get_bit_uint64_t(expand_R15, u);
+		set_bit_uint8_t(&bits6_expand_R15, bit, l);
+		l--;
+	} //bits6_expand_R15=E(R15)1->6
+	
+	printf("E(R15)1->6=");
+	printf_uint8_t_binary(bits6_expand_R15); //E(R15)1->6
+		
+	// pour chaque chiffré faux
+	for(i=0;i<32;i++){
+		printf("\n");
+		printf_uint64_t_hexa(data->chiffre_faux[i].output);
+		printf(": 0x");
+		printf_uint32_t_hexa(data->chiffre_faux[i].R15);
+		printf(" ");
+		
+		// calcul de P-1(R16^R16*)
+		permutation_inv_inner_function(&perm, data->chiffre_faux[i].R16 ^ data->chiffre_juste.R16);
+
+		printf_uint32_t_binary(perm);
+		printf("<<<<<<<<<<\n");
+		printf("P-1(R16^R16*)_S1= "); //PROBLEME AU NIVEAU DE LA PERMUTATION
+		int u; uint8_t bit; uint8_t boite=0x00;
+		int l=4;
+		for(u=32;u>=29;u--){
+			bit=get_bit_uint32_t(perm, u);
+			set_bit_uint8_t(&boite, bit, l);
+			l--;
+		}
+		printf_uint8_t_binary(boite); //contient P −1 (R 16 ⊕ R 16 ∗)
+		printf("\n");
+		if (boite==0) {
+			printf("P −1 (R 16 ⊕ R 16 ∗)_S1 nul");
+			compteur--;
+		}
+		uint32_t test;
+		permutation_inner_function(&test, perm);
+		if (test==(data->chiffre_faux[i].R16 ^ data->chiffre_juste.R16)){
+			printf("OK");
+		}
+		else printf("FAUX");
+		uint8_t val_sbox1, val_sbox2;
+		for(val_sbox1=0; val_sbox1<15; val_sbox1++){
+			for(val_sbox2=0; val_sbox2<15; val_sbox2++){
+				if ((val_sbox1^val_sbox2)==boite){
+					printf_uint8_t_binary(val_sbox1); //contient S1(E(R15)⊕K16)
+					printf(" XOR ");
+					printf_uint8_t_binary(val_sbox2); //contient S1(E(R15*)⊕K16)
+					printf(":\n");
+
+					//met les differentes possibilites pour E(R15)⊕K16
+					get_input_sbox(val_sbox1, S1, &input1, &input2, &input3, &input4);
+					
+
+
+					printf("K16(1->6): ");
+					k16_1=input1^bits6_expand_R15;
+					k16_2=input2^bits6_expand_R15;
+					k16_3=input3^bits6_expand_R15;
+					k16_4=input4^bits6_expand_R15;
+					printf_uint8_t_binary(k16_1);
+					if (k16_1==0) printf("---------");
+					printf(" OU ");
+					printf_uint8_t_binary(k16_2);
+					if (k16_2==0) printf("---------");
+					printf(" OU ");
+					printf_uint8_t_binary(k16_3);
+					if (k16_3==0) printf("---------");
+					printf(" OU ");
+					printf_uint8_t_binary(k16_4);
+					if (k16_4==0) printf("---------");
+					printf("\n");
+
+					/*expand(&expand_R15_faux, data->chiffre_faux[i].R15); //expand_R15_faux=E(R15*)
+					l=6;
+					for(u=48;u>=43;u--){ //pour otenir les bits 1 a 6 (boiteS1)
+						bit=get_bit_uint64_t(expand_R15_faux, u);
+						set_bit_uint8_t(&bit6_expand_R15_faux, bit, l);
+						l--;
+					} //bits6_expand_R15_faux=E(R15*)1->6
+
+					result_output_sbox_faux=bit6_expand_R15_faux^k16_1; //E(R15*)1->6 XOR K16(1->6)
+					if (val_sbox2==process_S_box_particular(result_output_sbox_faux, S1)){
+						printf("OOOOOOOOOOOOOOOO:%d\n\n\n\n",k16_1);
+
+					}
+
+					result_output_sbox_faux=bit6_expand_R15_faux^k16_2; //E(R15*)1->6 XOR K16(1->6)
+					if (val_sbox2==process_S_box_particular(result_output_sbox_faux, S1)){
+						printf("OOOOOOOOOOOOOOOO:%d\n\n\n\n", k16_2);
+					}
+
+					result_output_sbox_faux=bit6_expand_R15_faux^k16_3; //E(R15*)1->6 XOR K16(1->6)
+					if (val_sbox2==process_S_box_particular(result_output_sbox_faux, S1)){
+						printf("OOOOOOOOOOOOOOOO:%d\n\n\n\n", k16_3);
+					}
+
+					result_output_sbox_faux=bit6_expand_R15_faux^k16_4; //E(R15*)1->6 XOR K16(1->6)
+					if (val_sbox2==process_S_box_particular(result_output_sbox_faux, S1)){
+						printf("OOOOOOOOOOOOOOOO:%d\n\n\n\n", k16_4);
+					}*/
+				}
+			}
+		}
+
+	}
+	printf(">>>>>>>>>%d\n", compteur);
 }
 
 

@@ -255,3 +255,32 @@ int set_bit_uint32_t (uint32_t* elem, uint8_t bit, uint8_t pos){
 	return 0;
 }
 
+/**
+ * \fn int set_bit_uint8_t (uint8_t* elem, uint8_t bit, uint8_t pos)
+ * \brief Fonction qui initialise le bit à la position pos de elem. 
+ * Le bit de poids faible a la position pos=1. 
+ * \param elem élément à modifier
+ * \param bit valeur du futur bit à changer. 
+ * \param pos position du bit à changer. 
+ * \return renvoie 0 en cas de réussite et 1 en cas d'échec
+ * (change la valeur de l'erreur).
+ */
+int set_bit_uint8_t (uint8_t* elem, uint8_t bit, uint8_t pos){
+	if(bit==1){
+		uint32_t mask=1ULL;
+		mask <<= (pos-1);
+		(*elem)|=mask;
+	}
+	else if(bit==0){
+		uint32_t mask1=0xFF;
+		uint32_t mask2=1ULL;
+		mask2 <<= (pos-1);
+		mask1 ^= mask2;
+		(*elem)&=mask1;
+	}
+	else {
+		return des_errno=ERR_BIT, 1;
+	}
+	return 0;
+}
+

@@ -9,5 +9,6 @@ void test_encryption_decryption_K16();
 void test_encryption_decryption_K1();
 void test_get_R15_exemple();
 void test_get_R15_attaque();
+void test_get_R16_exemple();
 
 #endif

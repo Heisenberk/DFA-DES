@@ -19,6 +19,11 @@ struct data {
 }; 
 typedef struct data DATA;
 
+/*struct sbox {
+	uint8_t num;
+}*/
+
 DATA initialize_data();
+void calcul_boite_s1 (DATA d);
 
 #endif

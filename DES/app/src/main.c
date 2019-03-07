@@ -9,15 +9,20 @@
 
 int main(){
 
-	DATA data = initialize_data();
+	/*DATA data = initialize_data();
 
-	int i; uint32_t R15_chiffre_faux;
-	for(i=0;i<32;i++){
-		printf_uint64_t_hexa(data.chiffre_faux[i].output);
-		printf(": 0x");
-		printf_uint32_t_hexa(data.chiffre_faux[i].R15);
-		printf("\n");
-	}
-	
+	calcul_boite_s1_inv (&data);*/
+	/*uint64_t init=0x133457799BBCDFF1;
+	KEY key;
+	key_schedule(&init, &key);*/
+	uint64_t K;
+
+	build_K(&K, 0xf0ccaaf, 0x556678f);
+
+	printf(">");
+	printf_uint64_t_binary(K);
+	printf("!");
+	printf_uint64_t_binary(0x133457799BBCDFF1);
+
 	return EXIT_SUCCESS;
 }

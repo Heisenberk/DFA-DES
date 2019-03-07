@@ -73,3 +73,18 @@ void test_generate_sub_key(){
 	CU_ASSERT_EQUAL(key.sub_key[14].bytes, 210631860764426); 
 	CU_ASSERT_EQUAL(key.sub_key[15].bytes, 223465186400245); 
 }
+
+void test_build_C16_D16(){
+	SUB_KEY k16;
+	k16.bytes=0xcb3d8b0e17f5;
+	uint32_t C16, D16;
+	CU_ASSERT_EQUAL(build_C16_D16(k16, &C16, &D16), 0);
+	CU_ASSERT_EQUAL(C16, 0xf04caa7); //les bits inconnus sont a 0
+	CU_ASSERT_EQUAL(D16, 0x552478b); //les bits inconnus sont a 0
+	
+}
+
+void test_build_K56(){
+	CU_ASSERT_EQUAL(build_K56(0xf0ccaaf, 0x556678f),0xf0ccaaf556678f);
+
+}

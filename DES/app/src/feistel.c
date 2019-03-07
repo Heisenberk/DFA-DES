@@ -60,10 +60,10 @@ int process_round_1_15_encryption(uint32_t* Li, uint32_t* Ri, SUB_KEY Kiadd1){
 	*Ri= (*Li)^(*Ri); // R(i+1)=Li XOR F(K(i+1), Ri)
 	*Li=Liadd1; // L(i+1)=Ri
 
-	printf_uint32_t_binary(*Li);
+	/*printf_uint32_t_binary(*Li);
 	printf(" ");
 	printf_uint32_t_binary(*Ri);
-	//printf(" \n");
+	//printf(" \n");*/
 
 	return 0;
 
@@ -78,10 +78,10 @@ int process_round_16_encryption(uint32_t* L15, uint32_t* R15, SUB_KEY K16){ //PK
 	*R15= (*L15)^(*R15); // R(16)=F(K16, R15) XOR L(15)
 	*L15=L16; // L(16)=R(15)
 
-	printf_uint32_t_binary(*L15);
+	/*printf_uint32_t_binary(*L15);
 	printf(" ");
 	printf_uint32_t_binary(*R15);
-	printf(" :15 \n");
+	printf(" :15 \n");*/
 
 	
 	return 0;
@@ -150,7 +150,7 @@ int encryption_des(uint64_t* data, uint64_t* key_64){
 	for(i=0;i<15;i++){
 		if(process_round_1_15_encryption(&Li, &Ri, key.sub_key[i])) 
 			return des_errno=ERR_BIT, 1;
-		printf(" :%d\n", i);
+		//printf(" :%d\n", i);
 	}
 	if(process_round_16_encryption(&Li, &Ri, key.sub_key[15])) 
 		return des_errno=ERR_BIT, 1;
@@ -163,8 +163,8 @@ int encryption_des(uint64_t* data, uint64_t* key_64){
 	printf("\n");*/
 	if(process_permutation(data, IP_inv)) 
 		return des_errno=ERR_BIT, 1;
-	printf("APRES ENCRYPTION : \n");
-	printf_uint64_t_hexa(*data);
+	/*printf("APRES ENCRYPTION : \n");
+	printf_uint64_t_hexa(*data);*/
 
 	return 0;
 }
@@ -226,8 +226,9 @@ uint32_t get_R15(uint64_t cipher){
 	uint32_t L16, R16;
 	if(build_L0_R0(cipher, &L16, &R16)) 
 		return des_errno=ERR_BIT, 1;
+	//inversion des L16 et R16 donc R16<->L16
 
-	return L16;
+	return R16;
 }
 
 uint32_t get_R16(uint64_t cipher){
@@ -239,6 +240,6 @@ uint32_t get_R16(uint64_t cipher){
 	uint32_t L16, R16;
 	if(build_L0_R0(cipher, &L16, &R16)) 
 		return des_errno=ERR_BIT, 1;
-
-	return R16;
+	//inversion des L16 et R16 donc R16<->L16
+	return L16;
 }

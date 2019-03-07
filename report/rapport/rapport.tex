@@ -75,7 +75,8 @@ A partir de cette attaque, il est possible de retrouver la clé secrète utilis�
 						
 	$P^{-1}(R_{16}\oplus R_{16}*)_{b_{29}\to b_{32}} = S_8(E(R_{15})\oplus K_{16})_{b_{29}\to b_{32}} \oplus S_8(E(R_{15}*)\oplus K_{16})_{b_{29}\to b_{32}}$ \newline
 	
-	\item étape 3 : éliminer les équations dont $P^{-1}(R_{16}\oplus R_{16}*)_{b_x\to b_y}$ s'annulent. \newline
+	\item étape 3 : éliminer les équations dont $P^{-1}(R_{16}\oplus R_{16}*)_{b_x\to b_y}$ s'annulent.
+	[ATTENTION SI SX() XOR SX() vaut 0 aussi] \newline
 	
 	\item étape 4 : faire une attaque exhaustive sur les sorties de chaque boîte-S. Cela permettra d'obtenir plusieurs cas possibles pour les entrées de celle-ci. En effet, il y a plusieurs solutions possibles pour la sortie d'une boîte-S, sachant qu'elles ne sont pas linéaires. De ce fait, on récupère toutes les solutions possibles pour chaque boîte-S. Une solution commune sera présente pour chaque chiffré faux qui sera la portion de bits de $K_{16}$. 
 	
