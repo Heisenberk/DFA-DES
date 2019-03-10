@@ -8,6 +8,7 @@
 #include "../../app/inc/inner_function.h"
 #include "../../app/inc/errors.h"
 #include "../../app/inc/manip_bits.h"
+#include "../../app/inc/feistel.h"
 
 int PC1_test[] = { 57, 49,  41, 33,  25,  17,  9,
 			  1, 58,  50, 42,  34,  26, 18,
@@ -86,5 +87,18 @@ void test_build_C16_D16(){
 
 void test_build_K56(){
 	CU_ASSERT_EQUAL(build_K56(0xf0ccaaf, 0x556678f),0xf0ccaaf556678f);
+}
 
+void test_build_K(){
+	uint64_t K;
+	CU_ASSERT_EQUAL(build_K(&K, 0xf0ccaaf, 0x556678f),0);
+	uint64_t m=0x0123456789ABCDEF;
+    CU_ASSERT_EQUAL(encryption_des(&m, K), 0);
+    CU_ASSERT_EQUAL(m, 0x85E813540F0AB405);
+}
+
+void test_set_parity_bits(){
+	uint64_t K=0xFEFEFEFEFEFEFEFE;
+	CU_ASSERT_EQUAL(set_parity_bits(&K) ,0);
+	CU_ASSERT_EQUAL(K, 0xFFFFFFFFFFFFFFFF);
 }

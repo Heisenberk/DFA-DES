@@ -21,5 +21,7 @@ int key_schedule (uint64_t* init, KEY* key);
 int build_C16_D16(SUB_KEY k16, uint32_t* C16, uint32_t* D16);
 uint64_t build_K56(uint32_t C0, uint32_t D0);
 int build_K(uint64_t* K, uint32_t C16, uint32_t D16);
+int set_parity_bits(uint64_t* K);
+
 
 #endif

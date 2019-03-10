@@ -142,3 +142,88 @@ void calcul_boite_s1 (DATA data){
 	}
 	printf("\n\n>>>>>>>>%d\n", compteur);
 }
+
+int brute_force_attack(DATA* data){
+	uint32_t C16, D16;
+	if (build_C16_D16(data->k16, &C16, &D16))
+		return 1;
+	printf("C16= ");
+	printf_uint32_t_binary(C16);
+	printf("\nD16= ");
+	printf_uint32_t_binary(D16);
+	printf("\n");
+
+	if (build_K(&(data->key), C16, D16))
+		return 1;
+
+	printf("\n:-------B-----XXB--XX---B-------B-------B-------B--X--X-B-X-X---B");
+	printf("\n>");
+	printf_uint64_t_binary((data->key));
+	printf("!");
+	//printf_uint64_t_binary(0x133457799BBCDFF1); //13 34 57 79 9B BC DF F1
+	printf_uint64_t_binary(0x123556789ABDDEF0);
+
+	uint8_t i;
+	int j;
+	uint8_t bit1, bit2, bit3, bit4, bit5, bit6, bit7, bit8;
+	uint64_t message_clair=data->message_clair;
+	for (i=0;i<0xFF; i++){
+		/*uint64_t m=0x0123456789ABCDEF;
+		uint64_t k=0x133457799BBCDFF1;
+		encryption_des(&m, &k);*/
+		
+
+		// recherche exhaustive sur les 8 bits non connus
+		bit1=get_bit_uint8_t(i,8);
+		if (set_bit_uint64_t(&(data->key), bit1, 7)) //le premier bit a chercher est a la position 7
+			return 1;
+		bit2=get_bit_uint8_t(i,7);
+		if (set_bit_uint64_t(&(data->key), bit2, 14))
+			return 1;
+		bit3=get_bit_uint8_t(i,6);
+		if (set_bit_uint64_t(&(data->key), bit3, 46))
+			return 1;
+		bit4=get_bit_uint8_t(i,5);
+		if (set_bit_uint64_t(&(data->key), bit4, 5))
+			return 1;
+		bit5=get_bit_uint8_t(i,4);
+		if (set_bit_uint64_t(&(data->key), bit5, 50))
+			return 1;
+		bit6=get_bit_uint8_t(i,3);
+		if (set_bit_uint64_t(&(data->key), bit6, 11))
+			return 1;
+		bit7=get_bit_uint8_t(i,2);
+		if (set_bit_uint64_t(&(data->key), bit7, 51))
+			return 1;
+		bit8=get_bit_uint8_t(i,1);
+		if (set_bit_uint64_t(&(data->key), bit8, 45))
+			return 1;
+
+		//ajout des bits de parité
+		if (set_parity_bits(&(data->key)))
+			return 1;
+
+		data->message_clair=message_clair;
+		printf(">KEY:");
+		printf_uint64_t_hexa((data->key));
+		//printf("\n");
+		if ((data->key)==0x123556789ABDDEF0) printf(" TROUVE ! ");
+		printf("\n CLAIR: ");
+		printf_uint64_t_hexa(data->message_clair);
+		encryption_des(&(data->message_clair), (data->key));
+		
+		printf("\n CHIFFRE: ");
+		printf_uint64_t_hexa(data->message_clair);
+		printf("\n");
+		if ((data->message_clair)==data->chiffre_juste.output){
+			printf("OK");
+			return 0;
+		}
+
+		
+		//remettre message clair comme avant
+
+	}
+	printf("NOT OK");
+	return 1;
+}

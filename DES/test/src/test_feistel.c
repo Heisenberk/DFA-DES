@@ -46,7 +46,7 @@ void test_process_round(){
 void test_encryption_des(){
      uint64_t m=0x0123456789ABCDEF;
      uint64_t k=0x133457799BBCDFF1;
-     CU_ASSERT_EQUAL(encryption_des(&m, &k), 0);
+     CU_ASSERT_EQUAL(encryption_des(&m, k), 0);
      CU_ASSERT_EQUAL(m, 0x85E813540F0AB405);
 }
 

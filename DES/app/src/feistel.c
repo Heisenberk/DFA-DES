@@ -124,7 +124,7 @@ int process_round_2_15_decryption(uint32_t* Li, uint32_t* Ri, SUB_KEY Ki){
 	return 0;
 }
 
-int encryption_des(uint64_t* data, uint64_t* key_64){
+int encryption_des(uint64_t* data, uint64_t key_64){
 	/*printf("AVANT ENCRYPTION : \n");
 	printf_uint64_t_hexa(*data);
 	printf("\n");*/
@@ -142,7 +142,7 @@ int encryption_des(uint64_t* data, uint64_t* key_64){
 
 	// création des 16 sous clés
 	KEY key;
-	if(key_schedule (key_64, &key))
+	if(key_schedule (&key_64, &key))
 		return des_errno=ERR_BIT, 1;
 
 	// Schema de Feistel

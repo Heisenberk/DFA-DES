@@ -33,6 +33,8 @@ int main(){
 	CU_add_test(suite1, "test_generate_sub_key", test_generate_sub_key);
 	CU_add_test(suite1, "test_build_C16_D16", test_build_C16_D16);
 	CU_add_test(suite1, "test_build_K56", test_build_K56);
+	CU_add_test(suite1, "test_build_K", test_build_K);
+	CU_add_test(suite1, "test_set_parity_bits", test_set_parity_bits);
 
 	CU_pSuite suite2 = CU_add_suite("Test Inner Function", setup,teardown);
 	CU_add_test(suite2, "test_expand", test_expand);

@@ -13,6 +13,7 @@
 #include "../inc/key_schedule.h"
 #include "../inc/errors.h"
 #include "../inc/manip_bits.h"
+#include "../inc/attack.h"
 
 /**
  * \var PC1
@@ -107,17 +108,17 @@ int process_Ci_Di(KEY* key){
 		uint32_t* Ci, *Di;
 		Ci=&(key->Ci);
 		Di=&(key->Di);
-		printf("Ci=");
+		/*printf("Ci=");
 		printf_uint32_t_binary(*Ci);
 		printf("\n");
 		printf("Di=");
 		printf_uint32_t_binary(*Di);
-		printf("\n");
+		printf("\n");*/
 		if(generate_sub_key(&(key->sub_key[i]), *Ci, *Di))
 			return des_errno=ERR_BIT, 1;
-		printf("K%d :", i+1);
+		/*printf("K%d :", i+1);
 		printf_uint64_t_binary(key->sub_key[i].bytes);
-		printf("\n\n");
+		printf("\n\n");*/
 	}
 	return 0;
 }
@@ -153,12 +154,6 @@ int key_schedule (uint64_t* init, KEY* key){
 int build_C16_D16(SUB_KEY k16, uint32_t* C16, uint32_t* D16){
 	*C16=0;
 	*D16=0;
-	/*char* str=malloc(33*sizeof(char));
-	int j;
-	for(j=0;j<32;j++){
-		str[j]='X';
-	}
-	str[32]='\0';*/
 	int i; uint8_t rang; uint8_t bit;
 	for(i=0;i<48;i++){
 		rang=PC2[i];
@@ -166,34 +161,23 @@ int build_C16_D16(SUB_KEY k16, uint32_t* C16, uint32_t* D16){
 		if (rang<=28){ //Ci
 			if (set_bit_uint32_t(C16, bit, 29-rang))
 				return 1;
-			/*if (bit==0){
-				str[rang-1+4]='0';
-			}
-			else str[rang-1+4]='1';*/
 		}
 		else { //Di
 
 			if (set_bit_uint32_t(D16, bit, (29-(rang-28))))
 				return 1;
-			/*printf("rang:%d->%d\n", rang, rang-28);
-			if (bit==0){
-				str[rang-1+4-28]='0';
-			}
-			else str[rang-1+4-28]='1';*/
 		}
 	}
-	//printf(">%s<\n", str);
 	return 0;
 }
 
-// construit K56 a partir de C0 et D0
+// construit K56 a partir de C0=C16 et D0=D16
 uint64_t build_K56(uint32_t C0, uint32_t D0){
 	uint64_t K56=0x00;
 	K56=C0;
 	K56<<=28;
 	K56|=D0;
 	printf_uint64_t_binary(K56);
-	printf("<\n");
 	return K56;
 }
 
@@ -204,22 +188,35 @@ int build_K(uint64_t* K, uint32_t C16, uint32_t D16){
 	uint64_t k56 = build_K56(C16, D16);
 	*K=0x00;
 
-	for(i=0;i<64;i++){
+	for(i=0;i<56;i++){
 		rang=PC1[i];
-		bit=get_bit_uint64_t_most(k56, 56-i);
+		bit=get_bit_uint64_t_most(k56, i+1+8);
 		if (set_bit_uint64_t(K, bit, 65-rang))
-			return 0;
-		/*if (i<=28) { //Ci
-			bit=get_bit_uint32_t_most(C16, i+1);
-			if (set_bit_uint64_t(K, bit, 65-rang))
-				return 1;
-		}
-		else { //Di
-			bit=get_bit_uint32_t_most(D16, (i+1)-28);
-			if (set_bit_uint64_t(K, bit, 65-rang))
-				return 1;
-		}*/
+			return 1;
 	}
 	return 0;
 }
+
+int set_parity_bits(uint64_t* K){
+
+
+	uint8_t bit1, bit2, bit3, bit4, bit5, bit6, bit7, bit8;
+	int i; int j=1;
+	for(i=0;i<8;i++){
+		bit1 = get_bit_uint64_t_most(*K, j);
+		bit2 = get_bit_uint64_t_most(*K, j+1);
+		bit3 = get_bit_uint64_t_most(*K, j+2);
+		bit4 = get_bit_uint64_t_most(*K, j+3);
+		bit5 = get_bit_uint64_t_most(*K, j+4);
+		bit6 = get_bit_uint64_t_most(*K, j+5);
+		bit7 = get_bit_uint64_t_most(*K, j+6);
+		bit8 = (bit1^bit2^bit3^bit4^bit5^bit6^bit7);
+		if (set_bit_uint64_t(K, bit8, ((8*(8-i))-7)))
+			return 1;
+		j+=8;
+	}
+	return 0;
+}
+
+
 
