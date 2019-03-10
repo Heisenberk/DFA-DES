@@ -11,6 +11,7 @@
 #include "../inc/test_inner_function.h"
 #include "../inc/test_manip_bits.h"
 #include "../inc/test_feistel.h"
+#include "../inc/test_attack.h"
 
 int setup(void)  { return 0; }
 int teardown(void) { return 0; }
@@ -55,6 +56,9 @@ int main(){
 	CU_add_test(suite3, "test_get_R15_exemple", test_get_R15_exemple);
 	CU_add_test(suite3, "test_get_R15_attaque", test_get_R15_attaque);
 	CU_add_test(suite3, "test_get_R16_exemple", test_get_R16_exemple);
+
+	CU_pSuite suite4 = CU_add_suite("Test Attack", setup,teardown);
+	CU_add_test(suite4, "test_brute_force_attack", test_brute_force_attack);
 
 	CU_basic_set_mode(CU_BRM_VERBOSE);
 	CU_basic_run_tests();

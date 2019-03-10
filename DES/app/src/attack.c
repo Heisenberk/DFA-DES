@@ -147,21 +147,21 @@ int brute_force_attack(DATA* data){
 	uint32_t C16, D16;
 	if (build_C16_D16(data->k16, &C16, &D16))
 		return 1;
-	printf("C16= ");
+	/*printf("C16= ");
 	printf_uint32_t_binary(C16);
 	printf("\nD16= ");
 	printf_uint32_t_binary(D16);
-	printf("\n");
+	printf("\n");*/
 
 	if (build_K(&(data->key), C16, D16))
 		return 1;
 
-	printf("\n:-------B-----XXB--XX---B-------B-------B-------B--X--X-B-X-X---B");
+	/*printf("\n:-------B-----XXB--XX---B-------B-------B-------B--X--X-B-X-X---B");
 	printf("\n>");
 	printf_uint64_t_binary((data->key));
 	printf("!");
 	//printf_uint64_t_binary(0x133457799BBCDFF1); //13 34 57 79 9B BC DF F1
-	printf_uint64_t_binary(0x123556789ABDDEF0);
+	printf_uint64_t_binary(0x123556789ABDDEF0);*/
 
 	uint8_t i;
 	int j;
@@ -175,7 +175,7 @@ int brute_force_attack(DATA* data){
 
 		// recherche exhaustive sur les 8 bits non connus
 		bit1=get_bit_uint8_t(i,8);
-		if (set_bit_uint64_t(&(data->key), bit1, 7)) //le premier bit a chercher est a la position 7
+		if (set_bit_uint64_t(&(data->key), bit1, 7)) //le premier bit a modifier est a la position 7
 			return 1;
 		bit2=get_bit_uint8_t(i,7);
 		if (set_bit_uint64_t(&(data->key), bit2, 14))
@@ -204,19 +204,19 @@ int brute_force_attack(DATA* data){
 			return 1;
 
 		data->message_clair=message_clair;
-		printf(">KEY:");
+		/*printf(">KEY:");
 		printf_uint64_t_hexa((data->key));
 		//printf("\n");
 		if ((data->key)==0x123556789ABDDEF0) printf(" TROUVE ! ");
-		printf("\n CLAIR: ");
-		printf_uint64_t_hexa(data->message_clair);
+		printf("\n CLAIR: ");*/
+		//printf_uint64_t_hexa(data->message_clair);
 		encryption_des(&(data->message_clair), (data->key));
 		
-		printf("\n CHIFFRE: ");
+		/*printf("\n CHIFFRE: ");
 		printf_uint64_t_hexa(data->message_clair);
-		printf("\n");
+		printf("\n");*/
 		if ((data->message_clair)==data->chiffre_juste.output){
-			printf("OK");
+			//printf("OK");
 			return 0;
 		}
 
@@ -224,6 +224,6 @@ int brute_force_attack(DATA* data){
 		//remettre message clair comme avant
 
 	}
-	printf("NOT OK");
+	//printf("NOT OK");
 	return 1;
 }

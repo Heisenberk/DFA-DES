@@ -177,7 +177,7 @@ uint64_t build_K56(uint32_t C0, uint32_t D0){
 	K56=C0;
 	K56<<=28;
 	K56|=D0;
-	printf_uint64_t_binary(K56);
+	//printf_uint64_t_binary(K56);
 	return K56;
 }
 
@@ -201,16 +201,27 @@ int set_parity_bits(uint64_t* K){
 
 
 	uint8_t bit1, bit2, bit3, bit4, bit5, bit6, bit7, bit8;
-	int i; int j=1;
+	int i; int j=1; int compteur;
 	for(i=0;i<8;i++){
+		compteur=0;
 		bit1 = get_bit_uint64_t_most(*K, j);
+		if (bit1==1) compteur++;
 		bit2 = get_bit_uint64_t_most(*K, j+1);
+		if (bit2==1) compteur++;
 		bit3 = get_bit_uint64_t_most(*K, j+2);
+		if (bit3==1) compteur++;
 		bit4 = get_bit_uint64_t_most(*K, j+3);
+		if (bit4==1) compteur++;
 		bit5 = get_bit_uint64_t_most(*K, j+4);
+		if (bit5==1) compteur++;
 		bit6 = get_bit_uint64_t_most(*K, j+5);
+		if (bit6==1) compteur++;
 		bit7 = get_bit_uint64_t_most(*K, j+6);
-		bit8 = (bit1^bit2^bit3^bit4^bit5^bit6^bit7);
+		if (bit7==1) compteur++;
+
+		if ((compteur%2)==0) bit8=1;
+		else bit8=0;
+
 		if (set_bit_uint64_t(K, bit8, ((8*(8-i))-7)))
 			return 1;
 		j+=8;

@@ -32,11 +32,14 @@ int main(){
 	//DATA data = initialize_data();
 	
 	DATA data;
-	data.k16.bytes=0xcb3d8b0e17f5;
-	data.chiffre_juste.output=0x85E813540F0AB405;
-	data.message_clair=0x0123456789ABCDEF;
+	data.k16.bytes=0x000210B12C4779;
+	data.chiffre_juste.output=0x670994D1365D5EAD;
+	data.message_clair=0xFBA2DC5EEAA7FEC2;
+
 
 	brute_force_attack(&data);
+	printf("\n!");
+	printf_uint64_t_hexa(data.key);
 
 	/*uint64_t m1=0x0123456789ABCDEF;
 	uint64_t k1=0x133457799BBCDFF1;

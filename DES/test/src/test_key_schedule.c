@@ -98,7 +98,7 @@ void test_build_K(){
 }
 
 void test_set_parity_bits(){
-	uint64_t K=0xFEFEFEFEFEFEFEFE;
+	uint64_t K=0xC0C0C0C0C0C0C0C0;
 	CU_ASSERT_EQUAL(set_parity_bits(&K) ,0);
-	CU_ASSERT_EQUAL(K, 0xFFFFFFFFFFFFFFFF);
+	CU_ASSERT_EQUAL(K, 0xC1C1C1C1C1C1C1C1);
 }
