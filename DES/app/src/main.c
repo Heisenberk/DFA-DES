@@ -37,20 +37,9 @@ int main(){
 	data.message_clair=0xFBA2DC5EEAA7FEC2;
 
 
-	brute_force_attack(&data);
+	find_K(&data);
 	printf("\n!");
 	printf_uint64_t_hexa(data.key);
-
-	/*uint64_t m1=0x0123456789ABCDEF;
-	uint64_t k1=0x133457799BBCDFF1;
-	uint64_t m2=0x0123456789ABCDEF;
-	uint64_t k2=0x123556789ABDDEF0;
-	encryption_des(&m1, k1);
-	printf_uint64_t_hexa(m1);
-	printf("\n");
-	encryption_des(&m2, k2);
-	printf_uint64_t_hexa(m2);
-	printf("\n");
-	printf_uint64_t_hexa(k2);*/
+	
 	return EXIT_SUCCESS;
 }

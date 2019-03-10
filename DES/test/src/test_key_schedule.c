@@ -9,15 +9,7 @@
 #include "../../app/inc/errors.h"
 #include "../../app/inc/manip_bits.h"
 #include "../../app/inc/feistel.h"
-
-int PC1_test[] = { 57, 49,  41, 33,  25,  17,  9,
-			  1, 58,  50, 42,  34,  26, 18,
-			  10,  2,  59, 51,  43,  35, 27,
-			  19, 11,   3, 60,  52,  44, 36,
-			  63, 55,  47, 39,  31,  23, 15,
-			  7, 62,  54, 46,  38,  30, 22,
-			  14,  6,  61, 53,  45,  37, 29,
-			  21, 13, 5, 28, 20, 12, 4};
+#include "../../app/inc/constants.h"
 
 
 void test_init_C0_D0(){
@@ -25,7 +17,7 @@ void test_init_C0_D0(){
 	uint64_t nouv=0;
 	int i;
 	for(i=0;i<56;i++){
-		uint8_t t=get_bit_uint64_t_most(init,PC1_test[i]);
+		uint8_t t=get_bit_uint64_t_most(init,PC1[i]);
 		set_bit_uint64_t(&nouv, t, 56-i);
 	}
 	init=nouv;
@@ -41,7 +33,7 @@ void test_process_Ci_Di(){
 	uint64_t nouv=0;
 	int i;
 	for(i=0;i<56;i++){
-		uint8_t t=get_bit_uint64_t_most(init,PC1_test[i]);
+		uint8_t t=get_bit_uint64_t_most(init,PC1[i]);
 		set_bit_uint64_t(&nouv, t, 56-i);
 	}
 	init=nouv;

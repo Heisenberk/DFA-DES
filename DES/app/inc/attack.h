@@ -27,7 +27,18 @@ typedef struct data DATA;
 }*/
 
 DATA initialize_data();
+
+
+uint32_t get_R15(uint64_t cipher);
+uint32_t get_R16(uint64_t cipher);
 void calcul_boite_s1 (DATA d);
-int brute_force_attack(DATA* data);
+
+
+int build_C16_D16(SUB_KEY k16, uint32_t* C16, uint32_t* D16);
+uint64_t build_K56(uint32_t C0, uint32_t D0);
+int build_K(uint64_t* K, uint32_t C16, uint32_t D16);
+int set_parity_bits(uint64_t* K);
+
+int find_K(DATA* data);
 
 #endif

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.31)  4 MAR 2019 16:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.31)  10 MAR 2019 17:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -419,6 +419,14 @@ Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 \@float@every@algorithm=\toks28
 \c@algorithm=\count141
 )
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 147.
+)
 (/usr/share/texlive/texmf-dist/tex/latex/algorithms/algorithmic.sty
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 \c@ALC@unique=\count142
@@ -428,29 +436,29 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 \ALC@tlm=\skip56
 \algorithmicindent=\skip57
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 22.
-Package hyperref Info: Option `breaklinks' set `true' on input line 22.
+Package hyperref Info: Option `colorlinks' set `true' on input line 23.
+Package hyperref Info: Option `breaklinks' set `true' on input line 23.
 
 (./rapport.aux)
 \openout1 = `rapport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Info: Redefining \degres on input line 29.
-LaTeX Info: Redefining \dots on input line 29.
-LaTeX Info: Redefining \up on input line 29.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Info: Redefining \degres on input line 30.
+LaTeX Info: Redefining \dots on input line 30.
+LaTeX Info: Redefining \up on input line 30.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -487,16 +495,7 @@ LaTeX Info: Redefining \up on input line 29.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box58
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
-)
-Package color Info: Driver file: pdftex.def on input line 147.
-)
-Package hyperref Info: Link coloring ON on input line 29.
-
+Package hyperref Info: Link coloring ON on input line 30.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
@@ -505,9 +504,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count146
 )
-LaTeX Info: Redefining \ref on input line 29.
-LaTeX Info: Redefining \pageref on input line 29.
-LaTeX Info: Redefining \nameref on input line 29.
+LaTeX Info: Redefining \ref on input line 30.
+LaTeX Info: Redefining \pageref on input line 30.
+LaTeX Info: Redefining \nameref on input line 30.
 
 (./rapport.out) (./rapport.out)
 \@outlinefile=\write3
@@ -548,12 +547,12 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 32.
+LaTeX Font Info:    Try loading font information for U+msa on input line 33.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 32.
+LaTeX Font Info:    Try loading font information for U+msb on input line 33.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -564,61 +563,127 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout4 = `rapport.toc'.
 
  [2]
-Underfull \hbox (badness 10000) in paragraph at lines 53--59
+<../pictures/fauteR15.png, id=35, 344.03531pt x 512.66531pt>
+File: ../pictures/fauteR15.png Graphic file (type png)
+<use ../pictures/fauteR15.png>
+Package pdftex.def Info: ../pictures/fauteR15.png  used on input line 45.
+(pdftex.def)             Requested size: 206.42278pt x 307.60155pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--60
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 53--59
+Underfull \hbox (badness 10000) in paragraph at lines 54--60
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 53--59
+Underfull \hbox (badness 10000) in paragraph at lines 54--60
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 53--59
+Underfull \hbox (badness 10000) in paragraph at lines 54--60
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 53--59
+Underfull \hbox (badness 10000) in paragraph at lines 54--60
+
+ []
+
+[3 <../pictures/fauteR15.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 61--62
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 60--61
+Underfull \hbox (badness 10000) in paragraph at lines 77--78
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 76--77
+Underfull \hbox (badness 10000) in paragraph at lines 79--81
+
+ []
+
+<../pictures/key_schedule.png, id=48, 686.565pt x 934.49126pt>
+File: ../pictures/key_schedule.png Graphic file (type png)
+<use ../pictures/key_schedule.png>
+Package pdftex.def Info: ../pictures/key_schedule.png  used on input line 91.
+(pdftex.def)             Requested size: 205.97108pt x 280.34953pt.
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 94--96
+
+ []
+
+<../pictures/C0_D0.png, id=55, 666.23906pt x 94.85437pt>
+File: ../pictures/C0_D0.png Graphic file (type png)
+<use ../pictures/C0_D0.png>
+Package pdftex.def Info: ../pictures/C0_D0.png  used on input line 97.
+(pdftex.def)             Requested size: 266.49089pt x 37.94107pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--100
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
+Underfull \hbox (badness 10000) in paragraph at lines 102--103
 
  []
 
-[3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 89.
- [4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 89.
+
+Underfull \hbox (badness 10000) in paragraph at lines 104--105
+
+ []
+
+<../pictures/K64.png, id=56, 874.01532pt x 33.12375pt>
+File: ../pictures/K64.png Graphic file (type png)
+<use ../pictures/K64.png>
+Package pdftex.def Info: ../pictures/K64.png  used on input line 106.
+(pdftex.def)             Requested size: 437.00659pt x 16.56183pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 108--109
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 110--111
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--127
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--127
+
+ []
+
+[5 <../pictures/key_schedule.png> <../pictures/C0_D0.png> <../pictures/K64.png>
+]
+Underfull \hbox (badness 10000) in paragraph at lines 128--130
+
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 141.
+[6]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 141.
  (./rapport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 89.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 89.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 141.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 141.
 Package rerunfilecheck Info: File `rapport.out' has not changed.
-(rerunfilecheck)             Checksum: D85838C327D360CEC0B137412E1471D8;147.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 89.
+(rerunfilecheck)             Checksum: DF55302B0322D040A0C2094BD94C7C5A;233.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 141.
  ) 
 Here is how much of TeX's memory you used:
- 9420 strings out of 494484
- 138372 string characters out of 6174950
- 251041 words of memory out of 5000000
- 12938 multiletter control sequences out of 15000+600000
+ 9446 strings out of 494484
+ 138908 string characters out of 6174950
+ 249058 words of memory out of 5000000
+ 12955 multiletter control sequences out of 15000+600000
  16010 words of font info for 46 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  44i,6n,42p,494b,468s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -636,10 +701,10 @@ e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf
 nts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmsy8.pfb>
-Output written on rapport.pdf (4 pages, 118926 bytes).
+Output written on rapport.pdf (6 pages, 192175 bytes).
 PDF statistics:
- 249 PDF objects out of 1000 (max. 8388607)
- 80 compressed objects within 1 object stream
- 8 named destinations out of 1000 (max. 500000)
- 17 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 289 PDF objects out of 1000 (max. 8388607)
+ 92 compressed objects within 1 object stream
+ 11 named destinations out of 1000 (max. 500000)
+ 45 words of extra memory for PDF output out of 10000 (max. 10000000)
 

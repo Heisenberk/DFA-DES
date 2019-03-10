@@ -6,6 +6,7 @@
 #include "../inc/errors.h"
 #include "../inc/inner_function.h"
 #include "../inc/key_schedule.h"
+#include "../inc/constants.h"
 
 int IP[64] = { 58, 50, 42, 34, 26, 18, 10, 2,
                60, 52, 44, 36, 28, 20, 12, 4,
@@ -169,77 +170,3 @@ int encryption_des(uint64_t* data, uint64_t key_64){
 	return 0;
 }
 
-int decryption_des(uint64_t* data, uint64_t* key_64){
-	/*printf("AVANT DECRYPTION : \n");
-	printf_uint64_t_hexa(*data);
-	printf("\n");*/
-
-	// permutation initiale 
-	if(process_permutation(data, IP)) 
-		return des_errno=ERR_BIT, 1;
-	/*printf("APRES PERMUTATION : \n");
-	printf_uint64_t_hexa(*data);
-	printf("\n");*/
-
-	// division en L0 et R0
-	uint32_t Li, Ri;
-	if(build_L0_R0(*data, &Li, &Ri)) 
-		return des_errno=ERR_BIT, 1;
-
-	// création des 16 sous clés
-	KEY key;
-	if(key_schedule (key_64, &key))
-		return des_errno=ERR_BIT, 1;
-
-	// Schema de Feistel
-	/*if(process_round_0_decryption(&Li, &Ri, key.sub_key[15])) 
-		return des_errno=ERR_BIT, 1;*/
-	if(process_round_1_decryption(&Li, &Ri, key.sub_key[15])) 
-		return des_errno=ERR_BIT, 1;
-	int i; int j=2;
-	for(i=14;i>=0;i--){
-		if(process_round_2_15_decryption(&Li, &Ri, key.sub_key[i])) 
-			return des_errno=ERR_BIT, 1;
-		//printf(" :%d-->%d\n", j, i);
-		j++;
-	}
-	
-	// permutation initiale 
-	if(rebuild_R16_L16(data, Li, Ri))
-		return des_errno=ERR_BIT, 1;
-	if(process_permutation(data, IP_inv)) 
-		return des_errno=ERR_BIT, 1;
-
-	//printf_uint64_t_hexa(*data);
-	/*printf("APRES DECRYPTION : \n");
-	printf_uint64_t_hexa(*data);*/
-
-	return 0;
-}
-
-uint32_t get_R15(uint64_t cipher){
-	// permutation initiale 
-	if(process_permutation(&cipher, IP)) 
-		return des_errno=ERR_BIT, 1;
-
-	// division en L0 et R0
-	uint32_t L16, R16;
-	if(build_L0_R0(cipher, &L16, &R16)) 
-		return des_errno=ERR_BIT, 1;
-	//inversion des L16 et R16 donc R16<->L16
-
-	return R16;
-}
-
-uint32_t get_R16(uint64_t cipher){
-	// permutation initiale 
-	if(process_permutation(&cipher, IP)) 
-		return des_errno=ERR_BIT, 1;
-
-	// division en L0 et R0
-	uint32_t L16, R16;
-	if(build_L0_R0(cipher, &L16, &R16)) 
-		return des_errno=ERR_BIT, 1;
-	//inversion des L16 et R16 donc R16<->L16
-	return L16;
-}

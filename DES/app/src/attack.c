@@ -6,6 +6,8 @@
 #include "../inc/manip_bits.h"
 #include "../inc/feistel.h"
 #include "../inc/attack.h"
+#include "../inc/constants.h"
+#include "../inc/errors.h"
 
 DATA initialize_data(){
 	DATA d;
@@ -56,6 +58,34 @@ DATA initialize_data(){
 		d.chiffre_faux[i].R15 = get_R15(chiffre_faux[i]);
 	}
 	return d;
+}
+
+
+uint32_t get_R15(uint64_t cipher){
+	// permutation initiale 
+	if(process_permutation(&cipher, IP)) 
+		return des_errno=ERR_BIT, 1;
+
+	// division en L0 et R0
+	uint32_t L16, R16;
+	if(build_L0_R0(cipher, &L16, &R16)) 
+		return des_errno=ERR_BIT, 1;
+	//inversion des L16 et R16 donc R16<->L16
+
+	return R16;
+}
+
+uint32_t get_R16(uint64_t cipher){
+	// permutation initiale 
+	if(process_permutation(&cipher, IP)) 
+		return des_errno=ERR_BIT, 1;
+
+	// division en L0 et R0
+	uint32_t L16, R16;
+	if(build_L0_R0(cipher, &L16, &R16)) 
+		return des_errno=ERR_BIT, 1;
+	//inversion des L16 et R16 donc R16<->L16
+	return L16;
 }
 
 
@@ -143,39 +173,105 @@ void calcul_boite_s1 (DATA data){
 	printf("\n\n>>>>>>>>%d\n", compteur);
 }
 
-int brute_force_attack(DATA* data){
+
+int build_C16_D16(SUB_KEY k16, uint32_t* C16, uint32_t* D16){
+	*C16=0;
+	*D16=0;
+	int i; uint8_t rang; uint8_t bit;
+	for(i=0;i<48;i++){
+		rang=PC2[i];
+		bit=get_bit_uint64_t(k16.bytes, 48-i);
+		if (rang<=28){ //Ci
+			if (set_bit_uint32_t(C16, bit, 29-rang))
+				return 1;
+		}
+		else { //Di
+
+			if (set_bit_uint32_t(D16, bit, (29-(rang-28))))
+				return 1;
+		}
+	}
+	return 0;
+}
+
+// construit K56 a partir de C0=C16 et D0=D16
+uint64_t build_K56(uint32_t C0, uint32_t D0){
+	uint64_t K56=0x00;
+	K56=C0;
+	K56<<=28;
+	K56|=D0;
+	//printf_uint64_t_binary(K56);
+	return K56;
+}
+
+int build_K(uint64_t* K, uint32_t C16, uint32_t D16){
+	int i;
+	uint8_t rang; uint8_t bit;
+
+	uint64_t k56 = build_K56(C16, D16);
+	*K=0x00;
+
+	for(i=0;i<56;i++){
+		rang=PC1[i];
+		bit=get_bit_uint64_t_most(k56, i+1+8);
+		if (set_bit_uint64_t(K, bit, 65-rang))
+			return 1;
+	}
+	return 0;
+}
+
+int set_parity_bits(uint64_t* K){
+
+
+	uint8_t bit1, bit2, bit3, bit4, bit5, bit6, bit7, bit8;
+	int i; int j=1; int compteur;
+	for(i=0;i<8;i++){
+		compteur=0;
+		bit1 = get_bit_uint64_t_most(*K, j);
+		if (bit1==1) compteur++;
+		bit2 = get_bit_uint64_t_most(*K, j+1);
+		if (bit2==1) compteur++;
+		bit3 = get_bit_uint64_t_most(*K, j+2);
+		if (bit3==1) compteur++;
+		bit4 = get_bit_uint64_t_most(*K, j+3);
+		if (bit4==1) compteur++;
+		bit5 = get_bit_uint64_t_most(*K, j+4);
+		if (bit5==1) compteur++;
+		bit6 = get_bit_uint64_t_most(*K, j+5);
+		if (bit6==1) compteur++;
+		bit7 = get_bit_uint64_t_most(*K, j+6);
+		if (bit7==1) compteur++;
+
+		if ((compteur%2)==0) bit8=1;
+		else bit8=0;
+
+		if (set_bit_uint64_t(K, bit8, ((8*(8-i))-7)))
+			return 1;
+		j+=8;
+	}
+	return 0;
+}
+
+
+
+
+int find_K(DATA* data){
 	uint32_t C16, D16;
 	if (build_C16_D16(data->k16, &C16, &D16))
 		return 1;
-	/*printf("C16= ");
-	printf_uint32_t_binary(C16);
-	printf("\nD16= ");
-	printf_uint32_t_binary(D16);
-	printf("\n");*/
 
 	if (build_K(&(data->key), C16, D16))
 		return 1;
-
-	/*printf("\n:-------B-----XXB--XX---B-------B-------B-------B--X--X-B-X-X---B");
-	printf("\n>");
-	printf_uint64_t_binary((data->key));
-	printf("!");
-	//printf_uint64_t_binary(0x133457799BBCDFF1); //13 34 57 79 9B BC DF F1
-	printf_uint64_t_binary(0x123556789ABDDEF0);*/
 
 	uint8_t i;
 	int j;
 	uint8_t bit1, bit2, bit3, bit4, bit5, bit6, bit7, bit8;
 	uint64_t message_clair=data->message_clair;
 	for (i=0;i<0xFF; i++){
-		/*uint64_t m=0x0123456789ABCDEF;
-		uint64_t k=0x133457799BBCDFF1;
-		encryption_des(&m, &k);*/
-		
-
+	
 		// recherche exhaustive sur les 8 bits non connus
 		bit1=get_bit_uint8_t(i,8);
-		if (set_bit_uint64_t(&(data->key), bit1, 7)) //le premier bit a modifier est a la position 7
+		if (set_bit_uint64_t(&(data->key), bit1, 7))
 			return 1;
 		bit2=get_bit_uint8_t(i,7);
 		if (set_bit_uint64_t(&(data->key), bit2, 14))
@@ -204,26 +300,9 @@ int brute_force_attack(DATA* data){
 			return 1;
 
 		data->message_clair=message_clair;
-		/*printf(">KEY:");
-		printf_uint64_t_hexa((data->key));
-		//printf("\n");
-		if ((data->key)==0x123556789ABDDEF0) printf(" TROUVE ! ");
-		printf("\n CLAIR: ");*/
-		//printf_uint64_t_hexa(data->message_clair);
 		encryption_des(&(data->message_clair), (data->key));
-		
-		/*printf("\n CHIFFRE: ");
-		printf_uint64_t_hexa(data->message_clair);
-		printf("\n");*/
-		if ((data->message_clair)==data->chiffre_juste.output){
-			//printf("OK");
-			return 0;
-		}
 
-		
-		//remettre message clair comme avant
-
+		if ((data->message_clair)==data->chiffre_juste.output) return 0;
 	}
-	//printf("NOT OK");
 	return 1;
 }

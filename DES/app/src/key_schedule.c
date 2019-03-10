@@ -13,12 +13,8 @@
 #include "../inc/key_schedule.h"
 #include "../inc/errors.h"
 #include "../inc/manip_bits.h"
-#include "../inc/attack.h"
+#include "../inc/constants.h"
 
-/**
- * \var PC1
- * \brief Tableau de permutation 1. 
- */
 int PC1[] = { 57, 49,  41, 33,  25,  17,  9,
 			  1, 58,  50, 42,  34,  26, 18,
 			  10,  2,  59, 51,  43,  35, 27,
@@ -151,83 +147,6 @@ int key_schedule (uint64_t* init, KEY* key){
 	return 0;
 }
 
-int build_C16_D16(SUB_KEY k16, uint32_t* C16, uint32_t* D16){
-	*C16=0;
-	*D16=0;
-	int i; uint8_t rang; uint8_t bit;
-	for(i=0;i<48;i++){
-		rang=PC2[i];
-		bit=get_bit_uint64_t(k16.bytes, 48-i);
-		if (rang<=28){ //Ci
-			if (set_bit_uint32_t(C16, bit, 29-rang))
-				return 1;
-		}
-		else { //Di
-
-			if (set_bit_uint32_t(D16, bit, (29-(rang-28))))
-				return 1;
-		}
-	}
-	return 0;
-}
-
-// construit K56 a partir de C0=C16 et D0=D16
-uint64_t build_K56(uint32_t C0, uint32_t D0){
-	uint64_t K56=0x00;
-	K56=C0;
-	K56<<=28;
-	K56|=D0;
-	//printf_uint64_t_binary(K56);
-	return K56;
-}
-
-int build_K(uint64_t* K, uint32_t C16, uint32_t D16){
-	int i;
-	uint8_t rang; uint8_t bit;
-
-	uint64_t k56 = build_K56(C16, D16);
-	*K=0x00;
-
-	for(i=0;i<56;i++){
-		rang=PC1[i];
-		bit=get_bit_uint64_t_most(k56, i+1+8);
-		if (set_bit_uint64_t(K, bit, 65-rang))
-			return 1;
-	}
-	return 0;
-}
-
-int set_parity_bits(uint64_t* K){
-
-
-	uint8_t bit1, bit2, bit3, bit4, bit5, bit6, bit7, bit8;
-	int i; int j=1; int compteur;
-	for(i=0;i<8;i++){
-		compteur=0;
-		bit1 = get_bit_uint64_t_most(*K, j);
-		if (bit1==1) compteur++;
-		bit2 = get_bit_uint64_t_most(*K, j+1);
-		if (bit2==1) compteur++;
-		bit3 = get_bit_uint64_t_most(*K, j+2);
-		if (bit3==1) compteur++;
-		bit4 = get_bit_uint64_t_most(*K, j+3);
-		if (bit4==1) compteur++;
-		bit5 = get_bit_uint64_t_most(*K, j+4);
-		if (bit5==1) compteur++;
-		bit6 = get_bit_uint64_t_most(*K, j+5);
-		if (bit6==1) compteur++;
-		bit7 = get_bit_uint64_t_most(*K, j+6);
-		if (bit7==1) compteur++;
-
-		if ((compteur%2)==0) bit8=1;
-		else bit8=0;
-
-		if (set_bit_uint64_t(K, bit8, ((8*(8-i))-7)))
-			return 1;
-		j+=8;
-	}
-	return 0;
-}
 
 
 

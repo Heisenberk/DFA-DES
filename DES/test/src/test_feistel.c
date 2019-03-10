@@ -5,20 +5,11 @@
 #include <stdint.h>
 
 #include "../../app/inc/feistel.h"
-
-
-int IP_test[64] = { 58, 50, 42, 34, 26, 18, 10, 2,
-               60, 52, 44, 36, 28, 20, 12, 4,
-               62, 54, 46, 38, 30, 22, 14, 6,
-               64, 56, 48, 40, 32, 24, 16, 8,
-               57, 49, 41, 33, 25, 17, 9, 1,
-               59, 51, 43, 35, 27, 19, 11, 3, 
-               61, 53, 45, 37, 29, 21, 13, 5,
-               63, 55, 47, 39, 31, 23, 15, 7 };
+#include "../../app/inc/constants.h"
 
 void test_process_permutation(){
 	uint64_t data = 0x0123456789ABCDEF;
-	CU_ASSERT_EQUAL(process_permutation(&data, IP_test), 0);
+	CU_ASSERT_EQUAL(process_permutation(&data, IP), 0);
 	CU_ASSERT_EQUAL(data, 0xCC00CCFFF0AAF0AA);
 }
 
@@ -75,22 +66,5 @@ void test_encryption_decryption_K1(){
      CU_ASSERT_EQUAL(R0_cpy, R0);
 }
 
-void test_get_R16_exemple(){ //exemple chiffrement
-     uint64_t cipher = 0x85E813540F0AB405; //exemple sur internet
-     uint32_t R16 = get_R16(cipher);
-     CU_ASSERT_EQUAL(R16, 0xa4cd995);
-}
 
-void test_get_R15_exemple(){ //exemple chiffrement
-     uint64_t cipher = 0x85E813540F0AB405; //exemple sur internet
-     uint32_t R15 = get_R15(cipher);
-     CU_ASSERT_EQUAL(R15, 0x43423234);
-}
-
-void test_get_R15_attaque(){
-     /*uint64_t cipher = 0x670994D1365D5EAD; //chiffré juste pour l'attaque
-     uint32_t R15 = get_R15(cipher);
-     CU_ASSERT_EQUAL(R15, 0x697CF5AB);*/
-     CU_ASSERT_EQUAL(1,1);
-}
 
