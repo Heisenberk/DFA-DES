@@ -32,10 +32,6 @@ int main(){
 	CU_add_test(suite1, "test_init_C0_D0", test_init_C0_D0);
 	CU_add_test(suite1, "test_process_Ci_Di", test_process_Ci_Di);
 	CU_add_test(suite1, "test_generate_sub_key", test_generate_sub_key);
-	CU_add_test(suite1, "test_build_C16_D16", test_build_C16_D16);
-	CU_add_test(suite1, "test_build_K56", test_build_K56);
-	CU_add_test(suite1, "test_build_K", test_build_K);
-	CU_add_test(suite1, "test_set_parity_bits", test_set_parity_bits);
 
 	CU_pSuite suite2 = CU_add_suite("Test Inner Function", setup,teardown);
 	CU_add_test(suite2, "test_expand", test_expand);
@@ -57,7 +53,11 @@ int main(){
 	CU_pSuite suite4 = CU_add_suite("Test Attack", setup,teardown);
 	CU_add_test(suite4, "test_get_R15_exemple", test_get_R15_exemple);
 	CU_add_test(suite4, "test_get_R15_attaque", test_get_R15_attaque);
-	CU_add_test(suite4, "test_brute_force_attack", test_brute_force_attack);
+	CU_add_test(suite4, "test_build_C16_D16", test_build_C16_D16);
+	CU_add_test(suite4, "test_build_K56", test_build_K56);
+	CU_add_test(suite4, "test_build_K", test_build_K);
+	CU_add_test(suite4, "test_set_parity_bits", test_set_parity_bits);
+	CU_add_test(suite4, "test_find_K", test_find_K);
 
 	CU_basic_set_mode(CU_BRM_VERBOSE);
 	CU_basic_run_tests();

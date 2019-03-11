@@ -9,9 +9,10 @@
 
 int main(){
 
-	/*DATA data = initialize_data();
+	DATA data = initialize_data();
 
-	calcul_boite_s1_inv (&data);*/
+	//calcul_boite_s1_inv (&data);
+	calcul_xor(&data);
 	/*uint64_t init=0x133457799BBCDFF1;
 	KEY key;
 	key_schedule(&init, &key);*/
@@ -31,7 +32,7 @@ int main(){
 
 	//DATA data = initialize_data();
 	
-	DATA data;
+	/*DATA data;
 	data.k16.bytes=0x000210B12C4779;
 	data.chiffre_juste.output=0x670994D1365D5EAD;
 	data.message_clair=0xFBA2DC5EEAA7FEC2;
@@ -39,7 +40,8 @@ int main(){
 
 	find_K(&data);
 	printf("\n!");
-	printf_uint64_t_hexa(data.key);
-	
+	printf_uint64_t_hexa(data.key);*/
+
+
 	return EXIT_SUCCESS;
 }
