@@ -222,7 +222,10 @@ void calcul_xor(DATA* data){
 				printf("\nS1((E(R15*) XOR K16))=");
 				printf_uint8_t_binary(val_sbox2[v]);
 				
-				if (boite==(val_sbox2[v]^val_sbox1)) printf("!");
+				if (boite==(val_sbox2[v]^val_sbox1)){
+					printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+					printf_uint8_t_binary(k16_val_sbox1[v]);
+				}
 			}
 			printf("\n");
 			
