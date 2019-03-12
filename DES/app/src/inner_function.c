@@ -67,6 +67,7 @@ int P[32] = { 16, 7, 20, 21,
               22, 11, 4, 25 };
 
 int expand(uint64_t* expand, uint32_t R){
+	*expand=0;
 	int i; uint8_t bit;
 	for(i=0;i<48;i++){
 		bit = get_bit_uint32_t_most(R, E[i]);
@@ -77,6 +78,7 @@ int expand(uint64_t* expand, uint32_t R){
 }
 
 int process_S_box(uint32_t* result, SUB_KEY elem){
+	*result=0;
 	int i, j, k;
 	uint8_t bit1, bit2;
 	uint8_t input_sbox;
@@ -131,6 +133,7 @@ int permutation_inner_function(uint32_t* output, uint32_t input){
 }
 
 int permutation_inv_inner_function(uint32_t* output, uint32_t input){
+	*output=0;
 	int i;
 	*output=0x00;
 	for(i=0;i<32;i++){
@@ -214,13 +217,13 @@ int compte_possibilites_S1(uint8_t sortie){
 }
 
 uint8_t process_S_box_particular(uint8_t input, int S[4][16]){
-	//87654321
 	uint8_t bit1, bit2;
 	bit1=get_bit_uint8_t(input, 6);
 	bit2=get_bit_uint8_t(input, 1);
 	int x, y;
 	x=bit1; x<<=1; x|=bit2;
-	y=input; y<<=1; y>>=2;
+	y=(0x1e)&input;
+	y>>=1;
 	return (uint8_t)S[x][y];
 
 }

@@ -56,6 +56,7 @@ DATA initialize_data(){
 	for(i=0;i<32;i++){
 		d.chiffre_faux[i].output = chiffre_faux[i];
 		d.chiffre_faux[i].R15 = get_R15(chiffre_faux[i]);
+		d.chiffre_faux[i].R16 = get_R16(chiffre_faux[i]);
 	}
 	return d;
 }
@@ -89,16 +90,28 @@ uint32_t get_R16(uint64_t cipher){ //OKKKKKK
 }
 
 void calcul_xor(DATA* data){
+	int w, q;
+	int candidate_key[64];
+	for(w=0;w<64;w++){
+		candidate_key[w]=0;
+	}
+
+	int compte=0;
+	int temp=0;
+	
 	int i=0; uint32_t R15_chiffre_faux;
 	uint8_t val_sbox1, val_sbox2;
 	uint8_t input1, input2, input3, input4; 
 	uint8_t input5, input6, input7, input8;
+	uint8_t k16_val_sbox1[4];
+	uint8_t k16_val_sbox2[4];
 	uint8_t k16_1, k16_2, k16_3, k16_4;
 	uint8_t k16_5, k16_6, k16_7, k16_8;
 	uint32_t perm;
 	int compteur=0;
 	uint64_t expand_R15, expand_R15_faux;
 	uint8_t bits6_expand_R15=0; uint8_t bits6_expand_R15_faux;
+
 
 	expand(&expand_R15, data->chiffre_juste.R15); //expand_R15=E(R15)
 
@@ -110,11 +123,14 @@ void calcul_xor(DATA* data){
 		l--;
 	} //bits6_expand_R15=E(R15)1->6
 
-	printf("E(R15)=");
-	printf_uint64_t_binary(expand_R15);
+	printf("R15=");
+	printf_uint32_t_binary(data->chiffre_juste.R15); //32 bits ok
+	printf("\nE(R15)=");
+	printf_uint64_t_binary(expand_R15); //48 bits
 	printf("E(R15)1->6=");
 	printf_uint8_t_binary(bits6_expand_R15); //E(R15)1->6
-	printf("\n");
+	printf("\n\n");
+	
 
 
 	
@@ -130,10 +146,19 @@ void calcul_xor(DATA* data){
 
 		printf("chiffre faux n°%d : ", i+1);
 		printf_uint64_t_hexa(data->chiffre_faux[i].output);
-		printf(" ; R15=");
+		printf(" ; R15*=");
 		printf_uint32_t_hexa(data->chiffre_faux[i].R15);
+		printf("\nE(R15*)=");
+		printf_uint64_t_binary(expand_R15_faux); //48 bits
+		printf("E(R15*)1->6=");
+		printf_uint8_t_binary(bits6_expand_R15_faux); //E(R15)1->6
+		printf("\n");
 		printf(" \nP-1(R16 XOR R16*)=");
 		
+		printf_uint32_t_hexa((data->chiffre_faux[i].R16));
+		printf("\n");
+		printf_uint32_t_hexa((data->chiffre_juste.R16));
+		printf("\n");
 		permutation_inv_inner_function(&perm, ((data->chiffre_faux[i].R16) ^ (data->chiffre_juste.R16)));
 		printf_uint32_t_binary(perm);
 		printf("\n");
@@ -151,28 +176,46 @@ void calcul_xor(DATA* data){
 			printf("P −1 (R 16 ⊕ R 16 ∗) nul");
 		}
 
-		for(val_sbox1=0; val_sbox1<=15 ; val_sbox1++){
+		// test
+		bits6_expand_R15^=0x00;
+		bits6_expand_R15_faux^0x00;
+		printf("E(R15 )1->6 XOR K16 1->6=");
+		printf_uint8_t_binary(bits6_expand_R15);
+		printf("\n");
+		printf("E(R15*)1->6 XOR K16 1->6=");
+		printf_uint8_t_binary(bits6_expand_R15_faux);
+		printf("\n");
+
+		bits6_expand_R15=process_S_box_particular(bits6_expand_R15, S1);
+		bits6_expand_R15_faux=process_S_box_particular(bits6_expand_R15_faux, S1);
+		printf("S1(E(R15 )1->6 XOR K16 1->6)=");
+		printf_uint8_t_binary(bits6_expand_R15);
+		printf("\n");
+		printf("S1(E(R15*)1->6 XOR K16 1->6)=");
+		printf_uint8_t_binary(bits6_expand_R15_faux);
+		printf("\n");
+		printf_uint8_t_binary(bits6_expand_R15_faux^bits6_expand_R15);
+		printf("\n");
+
+		/*for(val_sbox1=0; val_sbox1<=15 ; val_sbox1++){
 			//met les differentes possibilites pour E(R15)⊕K16
 			get_input_sbox(val_sbox1, S1, &input1, &input2, &input3, &input4);
 			printf("Si S1((E(R15) XOR K16))=");
 			printf_uint8_t_binary(val_sbox1);
 			printf("\n");
 			printf("K16(1->6): ");
-			k16_1=input1^bits6_expand_R15;
-			k16_2=input2^bits6_expand_R15;
-			k16_3=input3^bits6_expand_R15;
-			k16_4=input4^bits6_expand_R15;
-			printf_uint8_t_binary(k16_1);
-			//if (k16_1==0) printf("---------");
+			// contient les clés possibles pour S1((E(R15) XOR K16))
+			k16_val_sbox1[0]=input1^bits6_expand_R15;
+			k16_val_sbox1[1]=input2^bits6_expand_R15;
+			k16_val_sbox1[2]=input3^bits6_expand_R15;
+			k16_val_sbox1[3]=input4^bits6_expand_R15;
+			printf_uint8_t_binary(k16_val_sbox1[0]);
 			printf(" OU ");
-			printf_uint8_t_binary(k16_2);
-			//if (k16_2==0) printf("---------");
+			printf_uint8_t_binary(k16_val_sbox1[1]);
 			printf(" OU ");
-			printf_uint8_t_binary(k16_3);
-			//if (k16_3==0) printf("---------");
+			printf_uint8_t_binary(k16_val_sbox1[2]);
 			printf(" OU ");
-			printf_uint8_t_binary(k16_4);
-			//if (k16_4==0) printf("---------");
+			printf_uint8_t_binary(k16_val_sbox1[3]);
 			
 
 			val_sbox2 = boite ^ val_sbox1; //val_sbox2=S1((E(R15*) XOR K16))
@@ -182,63 +225,41 @@ void calcul_xor(DATA* data){
 			get_input_sbox(val_sbox2, S1, &input5, &input6, &input7, &input8);
 			printf("\n");
 			printf("K16(1->6): ");
-			k16_5=input5^bits6_expand_R15_faux;
-			k16_6=input6^bits6_expand_R15_faux;
-			k16_7=input7^bits6_expand_R15_faux;
-			k16_8=input8^bits6_expand_R15_faux;
-			printf_uint8_t_binary(k16_5);
-			//if (k16_1==0) printf("---------");
+			// contient les clés possibles pour S1((E(R15*) XOR K16))
+			k16_val_sbox2[0]=input5^bits6_expand_R15_faux;
+			k16_val_sbox2[1]=input6^bits6_expand_R15_faux;
+			k16_val_sbox2[2]=input7^bits6_expand_R15_faux;
+			k16_val_sbox2[3]=input8^bits6_expand_R15_faux;
+			printf_uint8_t_binary(k16_val_sbox2[0]);
 			printf(" OU ");
-			printf_uint8_t_binary(k16_6);
-			//if (k16_2==0) printf("---------");
+			printf_uint8_t_binary(k16_val_sbox2[1]);
 			printf(" OU ");
-			printf_uint8_t_binary(k16_7);
-			//if (k16_3==0) printf("---------");
+			printf_uint8_t_binary(k16_val_sbox2[2]);
 			printf(" OU ");
-			printf_uint8_t_binary(k16_8);
-			//if (k16_4==0) printf("---------");
+			printf_uint8_t_binary(k16_val_sbox2[3]);
 
-			printf("\n\n");
+			for (w=0;w<4;w++){
+				for(q=0;q<4;q++){
+					if (k16_val_sbox1[w]==k16_val_sbox2[q]){
+						printf("\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Clé candidate : ");
+						printf_uint8_t_binary(k16_val_sbox1[w]);
+						candidate_key[k16_val_sbox1[w]]++;
 
-		}
-
-
-		// on va tester chaque possibilité pour trouver a et b tel que a XOR b = c
-		/*for(val_sbox1=0; val_sbox1<15; val_sbox1++){
-			for(val_sbox2=0; val_sbox2<15; val_sbox2++){
-				if ((val_sbox1^val_sbox2)==boite){
-					printf_uint8_t_binary(val_sbox1); //contient S1(E(R15)⊕K16)
-					printf(" XOR ");
-					printf_uint8_t_binary(val_sbox2); //contient S1(E(R15*)⊕K16)
-					printf(":\n");
-
-					//met les differentes possibilites pour E(R15)⊕K16
-					get_input_sbox(val_sbox1, S1, &input1, &input2, &input3, &input4);
-					
-
-
-					printf("K16(1->6): ");
-					k16_1=input1^bits6_expand_R15;
-					k16_2=input2^bits6_expand_R15;
-					k16_3=input3^bits6_expand_R15;
-					k16_4=input4^bits6_expand_R15;
-					printf_uint8_t_binary(k16_1);
-					if (k16_1==0) printf("---------");
-					printf(" OU ");
-					printf_uint8_t_binary(k16_2);
-					if (k16_2==0) printf("---------");
-					printf(" OU ");
-					printf_uint8_t_binary(k16_3);
-					if (k16_3==0) printf("---------");
-					printf(" OU ");
-					printf_uint8_t_binary(k16_4);
-					if (k16_4==0) printf("---------");
-					printf("\n");
+					}
 				}
 			}
+			temp=0;
+			printf("\n\n");
 		}*/
-		
+		printf("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n\n");
+
 	//}
+
+	for(w=0;w<64;w++){
+		if (candidate_key[w]!=0) {
+			printf("K16 : %d a %d itérations\n", w, candidate_key[w]);
+		}
+	}
 }
 
 void calcul_boite_s1 (DATA data){
