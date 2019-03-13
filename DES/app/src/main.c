@@ -18,7 +18,9 @@ int main(){
 	permutation_inv_inner_function(&out, (r16_1^r16_2));
 	printf_uint32_t_binary(out);*/
 	DATA data = initialize_data();
-	calcul_xor(&data);
+	attack_sbox(&data,1);
+
+
 	/*uint64_t d=0x650C94D5365C5EB9;
 	printf("CORRECTION:\n");
 	printf_uint64_t_binary(d);

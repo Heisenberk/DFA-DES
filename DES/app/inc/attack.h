@@ -32,6 +32,7 @@ DATA initialize_data();
 uint32_t get_R15(uint64_t cipher);
 uint32_t get_R16(uint64_t cipher);
 void calcul_boite_s1 (DATA d);
+void attack_sbox(DATA* data, int num_sbox);
 
 
 int build_C16_D16(SUB_KEY k16, uint32_t* C16, uint32_t* D16);
