@@ -188,6 +188,17 @@ void printf_uint64_t_hexa(uint64_t key){
 }
 
 /**
+ * \fn void printf_uint8_t_hexa(uint8_t key)
+ * \brief Fonction qui affiche en hexa un uint8_t. 
+ *
+ * \param key uint8_t à afficher. 
+ */
+void printf_uint8_t_hexa(uint8_t key){
+	printf("%x", key);
+}
+
+
+/**
  * \fn void printf_uint32_t_hexa(uint32_t key)
  * \brief Fonction qui affiche en hexa un uint32_t. 
  *

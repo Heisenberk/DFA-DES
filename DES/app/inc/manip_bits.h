@@ -20,5 +20,6 @@ void printf_uint32_t_binary(uint32_t key);
 void printf_uint8_t_binary(uint8_t key);
 void printf_uint64_t_hexa(uint64_t key);
 void printf_uint32_t_hexa(uint32_t key);
+void printf_uint8_t_hexa(uint8_t key);
 
 #endif
