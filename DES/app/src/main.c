@@ -18,7 +18,8 @@ int main(){
 	permutation_inv_inner_function(&out, (r16_1^r16_2));
 	printf_uint32_t_binary(out);*/
 	DATA data = initialize_data();
-	attack_sbox(&data,1);
+	//attack_sbox(&data,1);
+	apres(&data);
 
 
 	/*uint64_t d=0x650C94D5365C5EB9;
