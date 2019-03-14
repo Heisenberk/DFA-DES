@@ -57,6 +57,7 @@ int main(){
 	CU_add_test(suite4, "test_build_K56", test_build_K56);
 	CU_add_test(suite4, "test_build_K", test_build_K);
 	CU_add_test(suite4, "test_set_parity_bits", test_set_parity_bits);
+	CU_add_test(suite4, "test_find_K16", test_find_K16);
 	CU_add_test(suite4, "test_find_K", test_find_K);
 
 	CU_basic_set_mode(CU_BRM_VERBOSE);

@@ -26,17 +26,6 @@ void test_get_R15_attaque(){
      CU_ASSERT_EQUAL(1,1);
 }
 
-void test_find_K(){
-	DATA data;
-	data.k16.bytes=0x000210B12C4779;
-	data.chiffre_juste.output=0x670994D1365D5EAD;
-	data.message_clair=0xFBA2DC5EEAA7FEC2;
-
-	CU_ASSERT_EQUAL(find_K(&data), 0);
-	CU_ASSERT_EQUAL(data.key, 0x51922C19028FFD49);
-
-}
-
 void test_build_C16_D16(){
      SUB_KEY k16;
      k16.bytes=0xcb3d8b0e17f5;
@@ -63,4 +52,24 @@ void test_set_parity_bits(){
      uint64_t K=0xC0C0C0C0C0C0C0C0;
      CU_ASSERT_EQUAL(set_parity_bits(&K) ,0);
      CU_ASSERT_EQUAL(K, 0xC1C1C1C1C1C1C1C1);
+}
+
+void test_find_K16(){
+
+     DATA data;
+     data=initialize_data();
+     find_K16(&data);
+     CU_ASSERT_EQUAL(data.k16.bytes, 0x210b12c4779);
+}
+
+
+void test_find_K(){
+     DATA data;
+     data.k16.bytes=0x000210B12C4779;
+     data.chiffre_juste.output=0x670994D1365D5EAD;
+     data.message_clair=0xFBA2DC5EEAA7FEC2;
+
+     CU_ASSERT_EQUAL(find_K(&data), 0);
+     CU_ASSERT_EQUAL(data.key, 0x51922C19028FFD49);
+
 }

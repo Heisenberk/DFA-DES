@@ -9,5 +9,6 @@ void test_build_K56();
 void test_build_K();
 void test_set_parity_bits();
 void test_find_K();
+void test_find_K16();
 
 #endif
