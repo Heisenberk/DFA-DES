@@ -1,7 +1,6 @@
 /**
  * \file errors.h
- * \brief Présente les erreurs possibles de l'application et gère les 
- * fonctions de jet d'exception. 
+ * \brief Représente les signatures de fonctions concernant la gestion des erreurs. 
  * \author Clément CAUMES
  * */
 
@@ -14,7 +13,6 @@
  *
  * err_code est une série de constantes prédéfinie pour diverses futures 
  * fonctions.
- * @author Clément Caumes
  */
 enum err_code {
     ERR_NONE = 0,              /*!< Aucune erreur. */
@@ -26,12 +24,6 @@ enum err_code {
 };
 extern enum err_code des_errno;
 
- /** 
- * @brief Affiche le message d'erreur sur la sortie d'erreur en fonction 
- * du code d'erreur spécifié.
- * @param err Code d'erreur.
- * @author Clément Caumes
- */
 void err_print(const enum err_code err);
 
 #endif    

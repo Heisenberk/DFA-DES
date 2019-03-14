@@ -9,8 +9,12 @@
 
 #include <stdint.h>
 
+/**
+ * \struct uint48_t_s
+ * \brief structure représentant un entier sur 48 bits.
+ */
 struct uint48_t_s {
-	uint64_t bytes;
+	uint64_t bytes; /*!< Contenu de l'entier de 48 bits. */
 };
 typedef struct uint48_t_s uint48_t;
 

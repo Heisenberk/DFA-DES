@@ -1,11 +1,12 @@
+/**
+ * \file errors.h
+ * \brief Représente toutes les constantes de l'application. 
+ * \author Clément CAUMES
+ * */
+
 #ifndef CONSTANTS__H
 #define CONSTANTS__H
 
-
-/**
- * \var PC1
- * \brief Tableau de permutation 1. 
- */
 extern int PC1[];
 extern int PC2[];
 

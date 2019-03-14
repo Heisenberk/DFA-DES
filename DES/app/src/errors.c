@@ -1,7 +1,6 @@
 /**
  * \file errors.c 
- * \brief Présente les erreurs possibles de l'application et gère les 
- * fonctions de jet d'exception. 
+ * \brief Représente les fonctions concernant la gestion des erreurs. 
  * \author Clément CAUMES
  * */
 

@@ -163,6 +163,3 @@ int key_schedule (uint64_t* init, KEY* key){
 	return 0;
 }
 
-
-
-
