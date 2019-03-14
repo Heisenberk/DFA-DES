@@ -71,7 +71,7 @@ int shift_Ci_Di(uint32_t* val, int times){
 	return 0;
 }
 
-int generate_sub_key(SUB_KEY* sub_key, uint32_t Ci, uint32_t Di){
+int generate_sub_key(uint48_t* sub_key, uint32_t Ci, uint32_t Di){
 	int i; uint8_t bit;
 	sub_key->bytes=0;
 	for(i=0;i<48;i++){
@@ -113,7 +113,7 @@ int process_Ci_Di(KEY* key){
 		if(generate_sub_key(&(key->sub_key[i]), *Ci, *Di))
 			return des_errno=ERR_BIT, 1;
 		/*printf("K%d :", i+1);
-		printf_uint64_t_binary(key->sub_key[i].bytes);
+		printf_uint64_t_binary(key->uint48_t[i].bytes);
 		printf("\n\n");*/
 	}
 	return 0;

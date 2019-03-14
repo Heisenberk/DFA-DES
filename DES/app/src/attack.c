@@ -90,7 +90,7 @@ uint32_t get_R16(uint64_t cipher){ //OKKKKKK
 	return L16;
 }
 
-uint8_t get_sub_key(int selection_key[64]){
+uint8_t get_uint48_t(int selection_key[64]){
 	uint8_t rang_max=0;
 	uint8_t max=selection_key[0];
 	int i;
@@ -287,10 +287,10 @@ void attack_sbox(DATA* data, int num_sbox){
 	}
 
 
-	printf("SUBKEY>>>>>>>%d\n", get_sub_key(selection_key));
+	printf("SUBKEY>>>>>>>%d\n", get_uint48_t(selection_key));
 }*/
 
-int attack_sbox(DATA* data, uint8_t* sub_key_part, int num_sbox){
+int attack_sbox(DATA* data, uint8_t* uint48_t_part, int num_sbox){
 	int w, s, q, v;
 	int candidate_key[32][65];
 	//int** candidate_key=malloc(32*sizeof(int*));
@@ -478,9 +478,9 @@ int attack_sbox(DATA* data, uint8_t* sub_key_part, int num_sbox){
 	}
 
 
-	//printf("SUBKEY>>>>>>>%x\n", get_sub_key(selection_key));
-	*sub_key_part=get_sub_key(selection_key);
-	printf("Portion de clé trouvée : %x\n", *sub_key_part);
+	//printf("SUBKEY>>>>>>>%x\n", get_uint48_t(selection_key));
+	*uint48_t_part=get_uint48_t(selection_key);
+	printf("Portion de clé trouvée : %x\n", *uint48_t_part);
 	
 	/*for(s=0;s<64;s++){
 		printf("[%x=%d]-> %d elements\n", s, s, selection_key[s]);
@@ -501,7 +501,7 @@ int find_K16(DATA* data){
 	for(i=1; i<=8;i++){
 		part_k16=0x00;
 		k16_temp=0x00;
-		if (attack_sbox(data, &part_k16, i)) //DATA* data, uint8_t* sub_key_part, int num_sbox
+		if (attack_sbox(data, &part_k16, i)) //DATA* data, uint8_t* uint48_t_part, int num_sbox
 			return 1;
 		/*printf(">%x\n", part_k16);
 		printf_uint8_t_binary(part_k16);
@@ -745,7 +745,7 @@ void calcul_boite_s1 (DATA data){
 			K16=0x00;
 			K16|=partie_K16;
 			K16<<=42;
-			SUB_KEY k1, k2;
+			uint48_t k1, k2;
 			k1.bytes=expand_R15 ^ K16; //S1(E(R15) ⊕ K16) 
 		
 			k2.bytes=expand_R15_faux ^ K16; //S1(E(R15*) ⊕ K16) 
@@ -796,7 +796,7 @@ void calcul_boite_s1 (DATA data){
 
 
 
-int build_C16_D16(SUB_KEY k16, uint32_t* C16, uint32_t* D16){
+int build_C16_D16(uint48_t k16, uint32_t* C16, uint32_t* D16){
 	*C16=0;
 	*D16=0;
 	int i; uint8_t rang; uint8_t bit;

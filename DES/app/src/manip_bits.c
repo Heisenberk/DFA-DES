@@ -87,7 +87,7 @@ uint8_t get_bit_uint32_t_most (uint32_t elem, uint8_t i){
 }
 
 /**
- * \fn uint8_t get_6bits_uint64_t_most (SUB_KEY elem, uint8_t i)
+ * \fn uint8_t get_6bits_uint64_t_most (uint48_t elem, uint8_t i)
  * \brief Fonction qui permet d'obtenir le i ème bloc de 6 bits de elem en sachant
  * que le groupe de 6 bits de poids fort est à la position i=1.
  *
@@ -96,7 +96,7 @@ uint8_t get_bit_uint32_t_most (uint32_t elem, uint8_t i){
  * \return renvoie 0, 1, (ou 2 en cas d'erreur) en fonction du 
  * i ème bit de elem. 
  */
-uint8_t get_6bits_uint64_t_most (SUB_KEY elem, uint8_t i){
+uint8_t get_6bits_uint64_t_most (uint48_t elem, uint8_t i){
 	if(i<0) return 2;
 	if(i>8) return 2;
 	else{

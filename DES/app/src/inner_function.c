@@ -77,7 +77,7 @@ int expand(uint64_t* expand, uint32_t R){
 	return 0;
 }
 
-int process_S_box(uint32_t* result, SUB_KEY elem){
+int process_S_box(uint32_t* result, uint48_t elem){
 	*result=0;
 	int i, j, k;
 	uint8_t bit1, bit2;
@@ -144,7 +144,7 @@ int permutation_inv_inner_function(uint32_t* output, uint32_t input){
 	return 0;
 }
 
-int inner_function(SUB_KEY sub_key, uint32_t* R){
+int inner_function(uint48_t uint48_t, uint32_t* R){
 
 	// calcul de E(Ri)
 	uint64_t expande;
@@ -152,11 +152,11 @@ int inner_function(SUB_KEY sub_key, uint32_t* R){
 		return des_errno=ERR_BIT, 1;
 
 	// E(Ri) ^ Ki+1
-	sub_key.bytes ^= expande;
+	uint48_t.bytes ^= expande;
 
 	// calcul des S-Box
 	uint32_t output_sbox;
-	if(process_S_box(&output_sbox, sub_key))
+	if(process_S_box(&output_sbox, uint48_t))
 		return des_errno=ERR_BIT, 1;
 
 	// Permutation
@@ -233,7 +233,7 @@ void calcul_boite_s1_inv (DATA *data){
 	uint8_t input1, input2, input3, input4; 
 	uint8_t input5, input6, input7, input8;
 	uint8_t k16_1, k16_2, k16_3, k16_4;
-	SUB_KEY k;
+	uint48_t k;
 	uint64_t input_chiffre_faux;
 	int i=0; uint32_t R15_chiffre_faux;
 	uint32_t perm;

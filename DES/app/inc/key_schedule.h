@@ -2,16 +2,12 @@
 #define KEY_SCHEDULE__H
 
 #include <stdint.h>
-
-struct sub_key {
-	uint64_t bytes;
-};
-typedef struct sub_key SUB_KEY;
+#include "manip_bits.h"
 
 struct key{
 	uint32_t Ci;
 	uint32_t Di;
-	SUB_KEY sub_key[16];
+	uint48_t sub_key[16];
 
 }; typedef struct key KEY;
 

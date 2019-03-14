@@ -2,14 +2,18 @@
 #define MANIP_BITS__H
 
 #include <stdint.h>
-#include "key_schedule.h"
+
+struct uint48_t_s {
+	uint64_t bytes;
+};
+typedef struct uint48_t_s uint48_t;
 
 uint8_t get_bit_uint64_t (uint64_t elem, uint8_t i);
 uint8_t get_bit_uint32_t (uint32_t elem, uint8_t i);
 uint8_t get_bit_uint8_t (uint8_t elem, uint8_t i);
 uint8_t get_bit_uint64_t_most (uint64_t elem, uint8_t i);
 uint8_t get_bit_uint32_t_most (uint32_t elem, uint8_t i);
-uint8_t get_6bits_uint64_t_most (SUB_KEY elem, uint8_t i);
+uint8_t get_6bits_uint64_t_most (uint48_t elem, uint8_t i);
 
 int set_bit_uint64_t (uint64_t* elem, uint8_t bit, uint8_t pos);
 int set_bit_uint32_t (uint32_t* elem, uint8_t bit, uint8_t pos);

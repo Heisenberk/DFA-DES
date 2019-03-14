@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include "key_schedule.h"
+#include "manip_bits.h"
 
 struct cipher_Ri {
 	uint64_t output;
@@ -17,7 +18,7 @@ struct data {
 	uint64_t message_clair;
 	CIPHER_RI chiffre_juste;
 	CIPHER_RI chiffre_faux[32];
-	SUB_KEY k16;
+	uint48_t k16;
 	uint64_t key;
 }; 
 typedef struct data DATA;
@@ -32,10 +33,10 @@ DATA initialize_data();
 uint32_t get_R15(uint64_t cipher);
 uint32_t get_R16(uint64_t cipher);
 void calcul_boite_s1 (DATA d);
-int attack_sbox(DATA* data, uint8_t* sub_key_part, int num_sbox);
+int attack_sbox(DATA* data, uint8_t* uint48_t_part, int num_sbox);
 
 
-int build_C16_D16(SUB_KEY k16, uint32_t* C16, uint32_t* D16);
+int build_C16_D16(uint48_t k16, uint32_t* C16, uint32_t* D16);
 uint64_t build_K56(uint32_t C0, uint32_t D0);
 int build_K(uint64_t* K, uint32_t C16, uint32_t D16);
 int set_parity_bits(uint64_t* K);

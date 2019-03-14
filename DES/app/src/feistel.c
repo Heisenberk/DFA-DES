@@ -53,7 +53,7 @@ int rebuild_R16_L16(uint64_t* data, uint32_t L16, uint32_t R16){
 	return 0;
 }
 
-int process_round_1_15_encryption(uint32_t* Li, uint32_t* Ri, SUB_KEY Kiadd1){
+int process_round_1_15_encryption(uint32_t* Li, uint32_t* Ri, uint48_t Kiadd1){
 
 	uint32_t Liadd1 = *Ri;
     if(inner_function(Kiadd1, Ri)) 
@@ -70,7 +70,7 @@ int process_round_1_15_encryption(uint32_t* Li, uint32_t* Ri, SUB_KEY Kiadd1){
 
 }
 
-int process_round_16_encryption(uint32_t* L15, uint32_t* R15, SUB_KEY K16){ //PK CEST UNE SIMPLE INVERSION? 
+int process_round_16_encryption(uint32_t* L15, uint32_t* R15, uint48_t K16){ //PK CEST UNE SIMPLE INVERSION? 
 
 	uint32_t L16 = *R15;
 	if(inner_function(K16, R15)) 
@@ -88,7 +88,7 @@ int process_round_16_encryption(uint32_t* L15, uint32_t* R15, SUB_KEY K16){ //PK
 	return 0;
 }
 
-int process_round_1_decryption(uint32_t* L0, uint32_t* R0, SUB_KEY K16){
+int process_round_1_decryption(uint32_t* L0, uint32_t* R0, uint48_t K16){
 
 	// L15 = R16 XOR F(K16, L16)
 	// R15 = L16
@@ -108,7 +108,7 @@ int process_round_1_decryption(uint32_t* L0, uint32_t* R0, SUB_KEY K16){
 	return 0;
 }
 
-int process_round_2_15_decryption(uint32_t* Li, uint32_t* Ri, SUB_KEY Ki){
+int process_round_2_15_decryption(uint32_t* Li, uint32_t* Ri, uint48_t Ki){
 
 
 	uint32_t RiMin1 = *Li;
