@@ -61,13 +61,13 @@ void test_expand(){
 
 void test_get_6bits_uint64_t_most(){
 	uint64_t bytes = 0x6117ba866527;
-	SUB_KEY k;
+	uint48_t k;
 	k.bytes=bytes;
 	CU_ASSERT_EQUAL(get_6bits_uint64_t_most(k, 1),0x18);	
 }
 
 void test_process_S_box(){
-	SUB_KEY k;
+	uint48_t k;
 	k.bytes=0x6117ba866527;
 	uint32_t g;
 	CU_ASSERT_EQUAL(process_S_box(&g, k),0);	
@@ -75,7 +75,6 @@ void test_process_S_box(){
 }
 
 void test_process_S_box_particular(){
-	//uint8_t process_S_box_particular(uint8_t input, int S[4][16])
 	uint8_t input =0x1B;
 	CU_ASSERT_EQUAL(process_S_box_particular(input, S5_test), 9);
 }
@@ -100,7 +99,7 @@ void test_permutation_inv_inner_function(){
 
 void test_inner_function(){
 	uint32_t R = 0xf0aaf0aa;
-	SUB_KEY k;
+	uint48_t k;
 	k.bytes = 0x1b02effc7072;
 	CU_ASSERT_EQUAL(inner_function(k, &R),0);
 	CU_ASSERT_EQUAL(R, 0x234aa9bb);

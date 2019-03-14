@@ -1,3 +1,9 @@
+/**
+ * \file inner_function.h
+ * \brief Représente les signatures des fonctions concernant la fonction intérieur du DES. 
+ * \author Clément CAUMES
+ * */
+
 #ifndef INNER_FUNCTION__H
 #define INNER_FUNCTION__H
 
@@ -12,7 +18,7 @@ uint8_t process_S_box_particular(uint8_t input, int S[4][16]);
 int permutation_inner_function(uint32_t* output, uint32_t input);
 int permutation_inv_inner_function(uint32_t* output, uint32_t input);
 int inner_function(uint48_t sub_key, uint32_t* R);
-int compte_possibilites_S1(uint8_t sortie);
+
 int get_input_sbox(uint8_t output, int S[4][16], uint8_t* input1, uint8_t* input2, uint8_t* input3, uint8_t* input4);
-void calcul_boite_s1_inv (DATA *data);
+
 #endif

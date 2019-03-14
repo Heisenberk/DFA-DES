@@ -17,9 +17,12 @@
  * @author Clément Caumes
  */
 enum err_code {
-    ERR_NONE = 0,               /*!< Aucune erreur. */
-    ERR_BIT,                   /*!< Erreur pendant l'ouverture du fichier. */
-    ERR_OTHER                   /*!< Erreur quelconque. */
+    ERR_NONE = 0,              /*!< Aucune erreur. */
+    ERR_KEY_SCHEDULE, 		   /*!< Erreur génération des sous clés. */
+    ERR_INNER_FUNCTION,		   /*!< Erreur de la fonction intérieure. */
+    ERR_FEISTEL,			   /*!< Erreur de feistel. */
+    ERR_ATTACK, 			   /*!< Erreur lors de l'attaque DFA. */
+    ERR_OTHER                  /*!< Erreur quelconque. */
 };
 extern enum err_code des_errno;
 

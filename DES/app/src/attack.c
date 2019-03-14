@@ -66,12 +66,11 @@ DATA initialize_data(){
 uint32_t get_R15(uint64_t cipher){ //OOKKKKKKK
 	// permutation initiale 
 	if(process_permutation(&cipher, IP)) 
-		return des_errno=ERR_BIT, 1;
+		return des_errno=ERR_ATTACK, 1;
 
 	// division en L0 et R0
 	uint32_t L16, R16;
-	if(build_L0_R0(cipher, &L16, &R16)) 
-		return des_errno=ERR_BIT, 1;
+	build_L0_R0(cipher, &L16, &R16);
 	//inversion des L16 et R16 donc R16<->L16
 
 	return R16;
@@ -80,12 +79,11 @@ uint32_t get_R15(uint64_t cipher){ //OOKKKKKKK
 uint32_t get_R16(uint64_t cipher){ //OKKKKKK
 	// permutation initiale 
 	if(process_permutation(&cipher, IP)) 
-		return des_errno=ERR_BIT, 1;
+		return des_errno=ERR_ATTACK, 1;
 
 	// division en L0 et R0
 	uint32_t L16, R16;
-	if(build_L0_R0(cipher, &L16, &R16)) 
-		return des_errno=ERR_BIT, 1;
+	build_L0_R0(cipher, &L16, &R16);
 	//inversion des L16 et R16 donc R16<->L16
 	return L16;
 }

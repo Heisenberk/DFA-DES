@@ -52,7 +52,6 @@ int main(){
 
 	CU_pSuite suite4 = CU_add_suite("Test Attack", setup,teardown);
 	CU_add_test(suite4, "test_get_R15_exemple", test_get_R15_exemple);
-	CU_add_test(suite4, "test_get_R15_attaque", test_get_R15_attaque);
 	CU_add_test(suite4, "test_build_C16_D16", test_build_C16_D16);
 	CU_add_test(suite4, "test_build_K56", test_build_K56);
 	CU_add_test(suite4, "test_build_K", test_build_K);

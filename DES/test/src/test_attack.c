@@ -6,6 +6,7 @@
 
 #include "../../app/inc/attack.h"
 #include "../../app/inc/feistel.h"
+#include "../../app/inc/manip_bits.h"
 
 void test_get_R16_exemple(){ //exemple chiffrement
      uint64_t cipher = 0x85E813540F0AB405; //exemple sur internet
@@ -19,15 +20,8 @@ void test_get_R15_exemple(){ //exemple chiffrement
      CU_ASSERT_EQUAL(R15, 0x43423234);
 }
 
-void test_get_R15_attaque(){
-     /*uint64_t cipher = 0x670994D1365D5EAD; //chiffré juste pour l'attaque
-     uint32_t R15 = get_R15(cipher);
-     CU_ASSERT_EQUAL(R15, 0x697CF5AB);*/
-     CU_ASSERT_EQUAL(1,1);
-}
-
 void test_build_C16_D16(){
-     SUB_KEY k16;
+     uint48_t k16;
      k16.bytes=0xcb3d8b0e17f5;
      uint32_t C16, D16;
      CU_ASSERT_EQUAL(build_C16_D16(k16, &C16, &D16), 0);

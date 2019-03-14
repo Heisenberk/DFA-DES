@@ -1,3 +1,10 @@
+/**
+ * \file key_schedule.h
+ * \brief Représente les signatures des fonctions concernant la génération des sous
+ * clés. 
+ * \author Clément CAUMES
+ * */
+
 #ifndef KEY_SCHEDULE__H
 #define KEY_SCHEDULE__H
 
