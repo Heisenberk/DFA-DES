@@ -15,7 +15,6 @@
 #include "../inc/constants.h"
 #include "../inc/errors.h"
 
-
 /**
  * \fn DATA initialize_data()
  * \brief Fonction d'initialisation des données pour réaliser l'attaque.  
@@ -265,7 +264,7 @@ int attack_sbox(DATA* data, uint8_t* uint48_t_part, int num_sbox){
 
 	// Recherche de l'intersection entre tous les chiffrés qui ont un impact sur la portion de sous clé. 
 	*uint48_t_part=find_intersection(selection_key);
-	printf("Portion de clé trouvée : \033[1m\033[33m%x\n\n\033[0m", *uint48_t_part);
+	printf("\033[1m\033[33mPortion de clé trouvée : %x\n\n\033[0m", *uint48_t_part);
 
 	free(selection_key);
 	return 0;
@@ -338,6 +337,14 @@ uint64_t build_K56(uint32_t C0, uint32_t D0){
 	return K56;
 }
 
+/**
+ * \fn int build_K(uint64_t* K, uint32_t C16, uint32_t D16)
+ * \brief Fonction qui construit K (sur 64 bits) à partir de C16 et D16.
+ * \param *K clé à trouver sur 64 bits. 
+ * \param C16 partie de l'algorithme de key schedule.
+ * \param D16 partie de l'algorithme de key schedule.
+ * \return renvoie K sur 64 bits (avec 16 bits non encore trouvés dont 8 bits de parité). 
+ */
 int build_K(uint64_t* K, uint32_t C16, uint32_t D16){
 	int i;
 	uint8_t rang; uint8_t bit;
@@ -354,9 +361,13 @@ int build_K(uint64_t* K, uint32_t C16, uint32_t D16){
 	return 0;
 }
 
+/**
+ * \fn int set_parity_bits(uint64_t* K)
+ * \brief Fonction qui modifie la clé pour mettre correctement les bits de parité.
+ * \param *K clé à trouver sur 64 bits. 
+ * \return renvoie 0 en cas de réussite et 1 en cas d'échec. 
+ */
 int set_parity_bits(uint64_t* K){
-
-
 	uint8_t bit1, bit2, bit3, bit4, bit5, bit6, bit7, bit8;
 	int i; int j=1; int compteur;
 	for(i=0;i<8;i++){
@@ -386,20 +397,26 @@ int set_parity_bits(uint64_t* K){
 	return 0;
 }
 
-
-
-
+/**
+ * \fn int find_K(DATA* data)
+ * \brief Fonction qui trouve K sur 64 bits.
+ * \param *data données qui contiennent les informations nécessaires à l'attaque.
+ * \return renvoie 0 en cas de réussite et 1 en cas d'échec. 
+ */
 int find_K(DATA* data){
+
+	// Deduit C16 et D16 à partir de K16
 	uint32_t C16, D16;
 	if (build_C16_D16(data->k16, &C16, &D16))
 		return 1;
 
+	// Construit K (sur 64 bits) avec 8 bits à trouver et 8 bits de parité non encore déduits. 
 	if (build_K(&(data->key), C16, D16))
 		return 1;
 
-	uint8_t i;
+	// Faire une recherche exhaustive afin de trouver les 8 bits manquants 
 	int j;
-	uint8_t bit1, bit2, bit3, bit4, bit5, bit6, bit7, bit8;
+	uint8_t i, bit1, bit2, bit3, bit4, bit5, bit6, bit7, bit8;
 	uint64_t message_clair=data->message_clair;
 	for (i=0;i<0xFF; i++){
 	
@@ -436,10 +453,11 @@ int find_K(DATA* data){
 		data->message_clair=message_clair;
 		encryption_des(&(data->message_clair), (data->key));
 
+		// Si le chiffrement du message clair avec la clé donne le chiffré correct alors la clé sur 64 bits a été trouvée. 
 		if ((data->message_clair)==data->chiffre_juste.output){
-			printf("\nK trouvée : ");
+			printf("\033[1m\033[31m\nK trouvée : ");
 			printf_uint64_t_hexa(data->key);
-			printf("\n");
+			printf("\n\n\033[0m");
 			
 			return 0;
 		}

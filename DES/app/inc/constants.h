@@ -1,5 +1,5 @@
 /**
- * \file errors.h
+ * \file constants.h
  * \brief Représente toutes les constantes de l'application. 
  * \author Clément CAUMES
  * */
