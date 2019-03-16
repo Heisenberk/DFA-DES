@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.31)  10 MAR 2019 17:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.31)  16 MAR 2019 21:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -436,29 +436,88 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 \ALC@tlm=\skip56
 \algorithmicindent=\skip57
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 23.
-Package hyperref Info: Option `breaklinks' set `true' on input line 23.
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count146
+\lst@gtempboxa=\box58
+\lst@token=\toks29
+\lst@length=\count147
+\lst@currlwidth=\dimen156
+\lst@column=\count148
+\lst@pos=\count149
+\lst@lostspace=\dimen157
+\lst@width=\dimen158
+\lst@newlines=\count150
+\lst@lineno=\count151
+\lst@maxwidth=\dimen159
 
-(./rapport.aux)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count152
+\lst@skipnumbers=\count153
+\lst@framebox=\box59
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+(/usr/share/texlive/texmf-dist/tex/latex/preprint/fullpage.sty
+Package: fullpage 1999/02/23 1.1 (PWD)
+\FP@margin=\skip58
+)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2018/05/02 v1.0c Color table columns (DPC)
+\everycr=\toks30
+\minrowclearance=\skip59
+)
+LaTeX Info: Redefining \color on input line 709.
+\rownum=\count154
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 99.
+Package hyperref Info: Option `breaklinks' set `true' on input line 99.
+ (./rapport.aux)
 \openout1 = `rapport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Info: Redefining \degres on input line 30.
-LaTeX Info: Redefining \dots on input line 30.
-LaTeX Info: Redefining \up on input line 30.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Info: Redefining \degres on input line 106.
+LaTeX Info: Redefining \dots on input line 106.
+LaTeX Info: Redefining \up on input line 106.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -472,13 +531,13 @@ LaTeX Info: Redefining \up on input line 30.
 * v-part:(T,H,B)=(51.21504pt, 692.5399pt, 51.21504pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=511.86491pt
-* \textheight=692.5399pt
-* \oddsidemargin=-21.05495pt
-* \evensidemargin=-21.05495pt
-* \topmargin=-58.05495pt
-* \headheight=12.0pt
-* \headsep=25.0pt
+* \textwidth=469.75502pt
+* \textheight=620.43001pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=0.0pt
+* \headheight=0.0pt
+* \headsep=0.0pt
 * \topskip=11.0pt
 * \footskip=30.0pt
 * \marginparwidth=59.0pt
@@ -494,19 +553,19 @@ LaTeX Info: Redefining \up on input line 30.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box58
-Package hyperref Info: Link coloring ON on input line 30.
+\AtBeginShipoutBox=\box60
+Package hyperref Info: Link coloring ON on input line 106.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count146
+\c@section@level=\count155
 )
-LaTeX Info: Redefining \ref on input line 30.
-LaTeX Info: Redefining \pageref on input line 30.
-LaTeX Info: Redefining \nameref on input line 30.
+LaTeX Info: Redefining \ref on input line 106.
+LaTeX Info: Redefining \pageref on input line 106.
+LaTeX Info: Redefining \nameref on input line 106.
 
 (./rapport.out) (./rapport.out)
 \@outlinefile=\write3
@@ -515,17 +574,17 @@ LaTeX Info: Redefining \nameref on input line 30.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count147
-\scratchdimen=\dimen156
-\scratchbox=\box59
-\nofMPsegments=\count148
-\nofMParguments=\count149
-\everyMPshowfont=\toks29
-\MPscratchCnt=\count150
-\MPscratchDim=\dimen157
-\MPnumerator=\count151
-\makeMPintoPDFobject=\count152
-\everyMPtoPDFconversion=\toks30
+\scratchcounter=\count156
+\scratchdimen=\dimen160
+\scratchbox=\box61
+\nofMPsegments=\count157
+\nofMParguments=\count158
+\everyMPshowfont=\toks31
+\MPscratchCnt=\count159
+\MPscratchDim=\dimen161
+\MPnumerator=\count160
+\makeMPintoPDFobject=\count161
+\everyMPtoPDFconversion=\toks32
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -546,13 +605,15 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: float package is loaded.
+Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 33.
+\c@lstlisting=\count162
+LaTeX Font Info:    Try loading font information for U+msa on input line 109.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 33.
+LaTeX Font Info:    Try loading font information for U+msb on input line 109.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -563,131 +624,210 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout4 = `rapport.toc'.
 
  [2]
-<../pictures/fauteR15.png, id=35, 344.03531pt x 512.66531pt>
+<../pictures/fauteR15.png, id=105, 344.03531pt x 512.66531pt>
 File: ../pictures/fauteR15.png Graphic file (type png)
 <use ../pictures/fauteR15.png>
-Package pdftex.def Info: ../pictures/fauteR15.png  used on input line 45.
+Package pdftex.def Info: ../pictures/fauteR15.png  used on input line 121.
 (pdftex.def)             Requested size: 206.42278pt x 307.60155pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 54--60
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 54--60
+ [3 <../pictures/fauteR15.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 132--138
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--60
+Underfull \hbox (badness 10000) in paragraph at lines 132--138
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--60
+Underfull \hbox (badness 10000) in paragraph at lines 132--138
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--60
-
- []
-
-[3 <../pictures/fauteR15.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 61--62
+Underfull \hbox (badness 10000) in paragraph at lines 132--138
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 77--78
+Overfull \hbox (16.9734pt too wide) in paragraph at lines 132--138
+\T1/cmr/m/n/10.95 Or, $\OML/cmm/m/it/10.95 f\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/1
+0.95 K[]; R[]\OT1/cmr/m/n/10.95 ) = \OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 (\O
+ML/cmm/m/it/10.95 S\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 E\OT1/cmr/m/n/10.95 
+(\OML/cmm/m/it/10.95 R[]\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95 ^^H \OML/cmm/m
+/it/10.95 K[]\OT1/cmr/m/n/10.95 )) = \OML/cmm/m/it/10.95 P\OT1/cmr/m/n/10.95 (\
+OML/cmm/m/it/10.95 S[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 E\OT1/cmr/m/n/10.
+95 (\OML/cmm/m/it/10.95 R[]\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95 ^^H \OML/cm
+m/m/it/10.95 K[]\OT1/cmr/m/n/10.95 )[]\OMS/cmsy/m/n/10.95 jj\OML/cmm/m/it/10.95
+ :::\OMS/cmsy/m/n/10.95 jj\OML/cmm/m/it/10.95 S[]\OT1/cmr/m/n/10.95 (\OML/cmm/m
+/it/10.95 E\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 R[]\OT1/cmr/m/n/10.95 ) \OMS
+/cmsy/m/n/10.95 ^^H \OML/cmm/m/it/10.95 K[]\OT1/cmr/m/n/10.95 )[])$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 132--138
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--81
+Underfull \hbox (badness 10000) in paragraph at lines 139--140
 
  []
 
-<../pictures/key_schedule.png, id=48, 686.565pt x 934.49126pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--156
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 157--158
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 159--160
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 161--162
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 163--164
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 165--166
+
+ []
+
+[5] [6]
+<../pictures/key_schedule.png, id=142, 686.565pt x 934.49126pt>
 File: ../pictures/key_schedule.png Graphic file (type png)
 <use ../pictures/key_schedule.png>
-Package pdftex.def Info: ../pictures/key_schedule.png  used on input line 91.
+Package pdftex.def Info: ../pictures/key_schedule.png  used on input line 280.
 (pdftex.def)             Requested size: 205.97108pt x 280.34953pt.
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 94--96
+
+Underfull \hbox (badness 10000) in paragraph at lines 283--285
 
  []
 
-<../pictures/C0_D0.png, id=55, 666.23906pt x 94.85437pt>
+<../pictures/C0_D0.png, id=143, 666.23906pt x 94.85437pt>
 File: ../pictures/C0_D0.png Graphic file (type png)
 <use ../pictures/C0_D0.png>
-Package pdftex.def Info: ../pictures/C0_D0.png  used on input line 97.
+Package pdftex.def Info: ../pictures/C0_D0.png  used on input line 286.
 (pdftex.def)             Requested size: 266.49089pt x 37.94107pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 99--100
+Underfull \hbox (badness 10000) in paragraph at lines 288--289
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 102--103
+Underfull \hbox (badness 10000) in paragraph at lines 291--292
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 104--105
+Underfull \hbox (badness 10000) in paragraph at lines 293--294
 
  []
 
-<../pictures/K64.png, id=56, 874.01532pt x 33.12375pt>
+[7 <../pictures/key_schedule.png> <../pictures/C0_D0.png>]
+<../pictures/K64.png, id=151, 874.01532pt x 33.12375pt>
 File: ../pictures/K64.png Graphic file (type png)
 <use ../pictures/K64.png>
-Package pdftex.def Info: ../pictures/K64.png  used on input line 106.
+Package pdftex.def Info: ../pictures/K64.png  used on input line 295.
 (pdftex.def)             Requested size: 437.00659pt x 16.56183pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 108--109
+Overfull \hbox (0.61446pt too wide) in paragraph at lines 295--295
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 297--298
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 110--111
+Underfull \hbox (badness 10000) in paragraph at lines 299--300
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--127
+Underfull \hbox (badness 10000) in paragraph at lines 301--302
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--127
+Overfull \hbox (33.85779pt too wide) in paragraph at lines 310--311
+[]\T1/cmr/m/n/10.95 Après avoir im-plé-men-ter les fonc-tions "$\OML/cmm/m/it/1
+0.95 build[]C\OT1/cmr/m/n/10.95 16[]\OML/cmm/m/it/10.95 D\OT1/cmr/m/n/10.95 16$
+\T1/cmr/m/n/10.95 ", "$\OML/cmm/m/it/10.95 build[]K\OT1/cmr/m/n/10.95 56$\T1/cm
+r/m/n/10.95 , "$\OML/cmm/m/it/10.95 build[]K$\T1/cmr/m/n/10.95 ", "$\OML/cmm/m/
+it/10.95 set[]parity[]bits$\T1/cmr/m/n/10.95 "
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 314--320
 
  []
 
-[5 <../pictures/key_schedule.png> <../pictures/C0_D0.png> <../pictures/K64.png>
-]
-Underfull \hbox (badness 10000) in paragraph at lines 128--130
+
+Underfull \hbox (badness 10000) in paragraph at lines 314--320
 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 141.
-[6]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 141.
+
+Underfull \hbox (badness 10000) in paragraph at lines 321--323
+
+ []
+
+[8 <../pictures/K64.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 337--338
+
+ []
+
+[9]
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 348.
+ (../../app/src/main.c
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 1.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1.
+) [10]
+(./latex_attack.c [11] [12] [13] [14] [15] [16] [17] [18] [19]) [20]
+(../../app/src/key_schedule.c [21] [22]) [23] (../../app/src/feistel.c [24]
+[25] [26]) [27] (../../app/src/inner_function.c [28] [29] [30] [31] [32])
+[33] (../../app/src/manip_bits.c [34] [35] [36] [37] [38]) [39]
+(../../app/src/errors.c) [40]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 376.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 376.
  (./rapport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 141.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 141.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 376.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 376.
 Package rerunfilecheck Info: File `rapport.out' has not changed.
-(rerunfilecheck)             Checksum: DF55302B0322D040A0C2094BD94C7C5A;233.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 141.
+(rerunfilecheck)             Checksum: E897AD7183E6C1EFD2AE4FCF95F656C7;1080.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 376.
  ) 
 Here is how much of TeX's memory you used:
- 9446 strings out of 494484
- 138908 string characters out of 6174950
- 249058 words of memory out of 5000000
- 12955 multiletter control sequences out of 15000+600000
- 16010 words of font info for 46 fonts, out of 8000000 for 9000
+ 13784 strings out of 494484
+ 197609 string characters out of 6174950
+ 641767 words of memory out of 5000000
+ 15663 multiletter control sequences out of 15000+600000
+ 21271 words of font info for 59 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 44i,6n,42p,494b,468s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/user/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600p
+ 44i,7n,49p,673b,2024s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/user/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600p
+k> </home/user/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0600.600p
+k> </home/user/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600p
+k> </home/user/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600p
 k> </home/user/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600p
 k> </home/user/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600p
 k> </home/user/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600p
@@ -700,11 +840,12 @@ e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmsy8.pfb>
-Output written on rapport.pdf (6 pages, 192175 bytes).
+ic/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmsy9.pfb>
+Output written on rapport.pdf (40 pages, 389925 bytes).
 PDF statistics:
- 289 PDF objects out of 1000 (max. 8388607)
- 92 compressed objects within 1 object stream
- 11 named destinations out of 1000 (max. 500000)
- 45 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2520 PDF objects out of 2984 (max. 8388607)
+ 2120 compressed objects within 22 object streams
+ 1574 named destinations out of 1728 (max. 500000)
+ 157 words of extra memory for PDF output out of 10000 (max. 10000000)
 

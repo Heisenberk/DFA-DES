@@ -178,7 +178,7 @@ int attack_sbox(DATA* data, uint8_t* uint48_t_part, int num_sbox){
 		}
 
 		/*
-		 * Si P-1(R16 XOR R16*)x->y alors ce chiffré n'apporte pas d'informations sur la 
+		 * Si P-1(R16 XOR R16*)x->y=0 alors ce chiffré n'apporte pas d'informations sur la 
 		 * portion de sous clé associée à la boite S recherchée. 
 		 */
 		if (boite==0) { 
@@ -197,7 +197,7 @@ int attack_sbox(DATA* data, uint8_t* uint48_t_part, int num_sbox){
 
 		// Si ce chiffré approte des informations sur la portion de sous clé. 
 		if (to_do==1){
-			// On teste pour Sz(E(R15) XOR K16) possible (avec Sz la boite S numéro z). 
+			// On teste pour Sz(E(R15) XOR K16)x->y possible (avec Sz la boite S numéro z). 
 			for(val_sbox1=0; val_sbox1<=15 ; val_sbox1++){
 				/* 
 				 * On fait la procédure inverse de la boite S (4 inputs donne le même output)

@@ -1,4 +1,18 @@
 \babel@toc {french}{}
-\contentsline {section}{\numberline {1}Question 1 : Attaque par faute sur le DES}{3}{section.1}
-\contentsline {section}{\numberline {2}Question 2 : Application concr\IeC {\`e}te}{3}{section.2}
-\contentsline {section}{\numberline {3}Question 3 : Retrouver la cl\IeC {\'e} compl\IeC {\`e}te du DES}{4}{section.3}
+\contentsline {section}{\numberline {1}Partie 1 : Attaque par faute sur le DES}{3}{section.1}
+\contentsline {section}{\numberline {2}Partie 2 : Application concr\IeC {\`e}te}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1}Question 1}{4}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Question 2}{5}{subsection.2.2}
+\contentsline {section}{\numberline {3}Partie 3 : Retrouver la cl\IeC {\'e} compl\IeC {\`e}te du DES}{7}{section.3}
+\contentsline {subsection}{\numberline {3.1}Question 1}{7}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Question 2}{8}{subsection.3.2}
+\contentsline {section}{\numberline {4}Partie 4 : Fautes sur les tours pr\IeC {\'e}c\IeC {\'e}dents}{9}{section.4}
+\contentsline {section}{\numberline {5}Partie 5 : Contre-mesures}{9}{section.5}
+\contentsline {section}{\numberline {6}Annexe}{10}{section.6}
+\contentsline {subsection}{\numberline {6.1}main.c}{10}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}attack.c}{11}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}key\_schedule.c}{21}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}festeil.c}{24}{subsection.6.4}
+\contentsline {subsection}{\numberline {6.5}inner\_function.c}{28}{subsection.6.5}
+\contentsline {subsection}{\numberline {6.6}manip\_bits.c}{34}{subsection.6.6}
+\contentsline {subsection}{\numberline {6.7}errors.c}{40}{subsection.6.7}

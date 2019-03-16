@@ -118,9 +118,7 @@ int process_Ci_Di(KEY* key){
 	// initialisation de Vi
 	int Vi[16]; int i; uint32_t* Ci, *Di;
 	for(i=0;i<16;i++){
-		if((i==0)||(i==1)||(i==8)||(i==15)){
-			Vi[i]=1;
-		}
+		if((i==0)||(i==1)||(i==8)||(i==15)) Vi[i]=1;
 		else Vi[i]=2;
 	}
 	//génération des 16 sous clés
@@ -130,8 +128,7 @@ int process_Ci_Di(KEY* key){
 		if(shift_Ci_Di(&(key->Di), Vi[i]))
 			return 1;
 
-		Ci=&(key->Ci);
-		Di=&(key->Di);
+		Ci=&(key->Ci); Di=&(key->Di);
 		if(generate_sub_key(&(key->sub_key[i]), *Ci, *Di))
 			return 1;
 	}
@@ -159,7 +156,6 @@ int key_schedule (uint64_t* init, KEY* key){
 
 	if(process_Ci_Di(key)) 
 		return des_errno=ERR_KEY_SCHEDULE, 1;
-
 	return 0;
 }
 

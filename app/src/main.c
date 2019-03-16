@@ -1,7 +1,7 @@
 /**
  * \file main.c
- * \brief Représente les fonctions concernant l'attaque DFA sur DES. 
- * \author Clément CAUMES
+ * \brief Represente les fonctions concernant l'attaque DFA sur DES. 
+ * \author Clement CAUMES
  * */
 
 #include <stdio.h>
@@ -13,12 +13,12 @@
 
 /**
  * \fn int main
- * \brief Fonction principale du programme qui réalise l'attaque.  
+ * \brief Fonction principale du programme qui realise l'attaque.  
  * \return renvoie EXIT_FAILURE en cas d'erreur et EXIT_SUCCESS sinon. 
  */
 int main(){
 
-	// Initialisation des données avec un clair, un chiffré vrai et 32 chiffrés fautés. 
+	// Initialisation des donnees avec un clair, un chiffre vrai et 32 chiffres fautes. 
 	DATA data = initialize_data();
 
 	// Recherche de K16 (48 bits).
