@@ -16,7 +16,7 @@
 \usepackage{color}
 \usepackage{algorithmic}
 \usepackage{listings}
-
+\usepackage{url}
 \usepackage{fullpage}
 \usepackage{color}
 \usepackage[table]{xcolor}
@@ -101,7 +101,7 @@
 
 \title{\huge{\textbf Calcul sécurisé - Attaque par faute sur DES}}
 \author{CAUMES Clément 21501810}
-\date{Master 1 Informatique SeCReTs}
+\date{Master 1 Informatique SeCReTs \\ \url{www.github.com/Heisenberk/DFA-DES}}
 
 \begin{document}
 
@@ -170,7 +170,7 @@ Cette attaque par faute sur le dernier tour du DES comporte plusieurs étapes :
 
 \subsection{Question 2}
 
-Après avoir implémenter les fonctions "$attack\_sbox$", "$find\_intersection$" et "$find\_K16$" du fichier $attack.c$ dans la section \ref{attack.c}, on obtient pour chaque boîte-S les résultats suivants : 
+Après avoir implémenter les fonctions "$attack\_sbox$", "$find\_intersection$" et "$find\_K16$" du fichier $app/src/attack.c$ fournis en annexe, on obtient pour chaque boîte-S les résultats suivants : 
 
 \begin{enumerate}
 	\item Boîte-S 1 : 
@@ -307,7 +307,7 @@ Dans la question précédente, nous avons réussi à obtenir la clé secrète $K
 
 \subsection{Question 2}
 
-Après avoir implémenter les fonctions "$build\_C16\_D16$", "$build\_K56$, "$build\_K$", "$set\_parity\_bits$" et "$find\_K$" du fichier $attack.c$ dans la section \ref{attack.c}, on va effectuer les différentes étapes en détaillant : 
+Après avoir implémenter les fonctions "$build\_C16\_D16$", "$build\_K56$, "$build\_K$", "$set\_parity\_bits$" et "$find\_K$" du fichier $app/src/attack.c$ fournis en annexe, on va effectuer les différentes étapes en détaillant : 
 
 \begin{itemize}
 
@@ -327,9 +327,11 @@ $K_{64}=51$ $92$ $2C$ $19$ $02$ $8F$ $FD$ $49$
 
 \end{itemize}
 
+\begin{center}\includegraphics[scale=0.5]{../pictures/resultat.png}\end{center}
+
 \section{Partie 4 : Fautes sur les tours précédents}
 
-On rappelle la loi de Moore qui dit que la puissance de calcul double tous les 18 mois. Pour rendre une attaque infaisable dans le monde civil, il faudrait $2^{80}$ opérations élémentaires et $2^{128}$ dans le monde militaire. \newline
+On rappelle la loi de Moore qui dit que la puissance de calcul double tous les 18 mois. Pour rendre une attaque infaisable dans le monde civil, il faudrait $2^{80}$ opérations élémentaires. \newline
 De plus, nous avons trouvé une complexité de $0(2^{14})$ pour une attaque DFA sur la valeur de sortie $R_{15}$. 
 
 \subsection{Faute provoquée sur la valeur de sortie $R_{14}$ du $14^{e}$ tour}
@@ -337,8 +339,8 @@ De plus, nous avons trouvé une complexité de $0(2^{14})$ pour une attaque DFA 
 Pour ce type d'attaque, on obtient 2 paires d'égalités : 
 
 \begin{itemize}
-	\item $R_{16}=L_{15} \oplus f(K_{16}, R_{15})$ et $L_{16}=R_{15}$
-	\item $R_{16*}=L_{15}* \oplus f(K_{16}, R_{15}*)$ et $L_{16*}=R_{15}*$
+	\item $R_{15}=L_{14} \oplus f(K_{15}, R_{14})$ et $L_{15}=R_{14}$
+	\item $R_{15*}=L_{14}* \oplus f(K_{15}, R_{14}*)$ et $L_{15*}=R_{14}*$
 \end{itemize}
 
 On obtient donc les équations suivantes : \newline
@@ -369,43 +371,9 @@ Notons $O(2^a)$ la complexité de l'attaque DFA sur DES sur la valeur de sortie 
 
 Il existe plusieurs contre-mesures possibles contre ce type d'attaque par fautes sur le DES : 
 \begin{itemize}
-	\item installer une sorte de "bouclier" contre les perturbations extérieures. En effet, cette attaque par faute peut être réalisée en agissant physiquement sur les composants électroniques, tels que du laser, une hausse de température ou une modification du champ magnétique environnant. Ainsi, un bouclier physique permettrait de contrer ce type d'attaque. Il n'y aura aucun impact sur le temps de calcul par rapport à une implémentation non sécurisée puisqu'on ne change pas le logiciel. \newline
+	\item installer une sorte de "bouclier" contre les perturbations extérieures. En effet, cette attaque par faute peut être réalisée en agissant physiquement sur les composants électroniques, tels que du laser, une hausse de température ou une modification du champ magnétique environnant. Ainsi, un bouclier physique permettrait de contrer ce type d'attaque. Il n'y aura aucun impact sur le temps de calcul par rapport à une implémentation non sécurisée puisqu'on ne change pas le logiciel. Malheureusement, installer ce dispositif coûte cher et inadapté pour certains appareils. \newline
 	
 	\item réaliser deux fois le calcul afin de vérifier que l'on obtient deux fois le même calcul. Cela permettrait d'annuler le calcul si une attaque de ce genre était effectuée. Il y aura un impact sur le temps de calcul : vu qu'on réalisera deux fois le même calcul, alors le temps de calcul va doublé par rapport à une implémentation non sécurisée. 
 \end{itemize}
-
-\newpage
-
-\section{Annexe}
-
-\subsection{main.c}
-
-\lstinputlisting[caption={main.c}, language=C]{../../app/src/main.c} \newpage
-
-\subsection{attack.c} 
-
-\label{attack.c}
-
-\lstinputlisting[caption={attack.c}, language=C]{latex_attack.c}\newpage
-
-\subsection{key\_schedule.c} 
-
-\lstinputlisting[caption={key\_schedule.c}, language=C]{../../app/src/key_schedule.c} \newpage
-
-\subsection{festeil.c} 
-
-\lstinputlisting[caption={feistel.c}, language=C]{../../app/src/feistel.c} \newpage
-
-\subsection{inner\_function.c} 
-
-\lstinputlisting[caption={inner\_function.c}, language=C]{../../app/src/inner_function.c} \newpage
-
-\subsection{manip\_bits.c} 
-
-\lstinputlisting[caption={manip\_bits.c}, language=C]{../../app/src/manip_bits.c} \newpage
-
-\subsection{errors.c} 
-
-\lstinputlisting[caption={errors.c}, language=C]{../../app/src/errors.c} \newpage
 
 \end{document}

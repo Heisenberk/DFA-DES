@@ -6,6 +6,12 @@
 *.ko
 *.obj
 *.elf
+*.log
+*.aux
+*.nlo
+*.out
+*.gz
+*.toc
 
 # Linker output
 *.ilk
