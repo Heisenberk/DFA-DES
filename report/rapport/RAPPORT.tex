@@ -371,9 +371,9 @@ Notons $O(2^a)$ la complexité de l'attaque DFA sur DES sur la valeur de sortie 
 
 Il existe plusieurs contre-mesures possibles contre ce type d'attaque par fautes sur le DES : 
 \begin{itemize}
-	\item installer une sorte de "bouclier" contre les perturbations extérieures. En effet, cette attaque par faute peut être réalisée en agissant physiquement sur les composants électroniques, tels que du laser, une hausse de température ou une modification du champ magnétique environnant. Ainsi, un bouclier physique permettrait de contrer ce type d'attaque. Il n'y aura aucun impact sur le temps de calcul par rapport à une implémentation non sécurisée puisqu'on ne change pas le logiciel. Malheureusement, installer ce dispositif coûte cher et inadapté pour certains appareils. \newline
+	\item installer une sorte de "bouclier" contre les perturbations extérieures. En effet, cette attaque par faute peut être réalisée en agissant physiquement sur les composants électroniques, tels que du laser, une hausse de température ou une modification du champ magnétique environnant. Ainsi, un bouclier physique permettrait de contrer ce type d'attaque. Il n'y aura aucun impact sur le temps de calcul par rapport à une implémentation non sécurisée puisqu'on ne change pas le logiciel. Malheureusement, installer ce dispositif coûte cher et est inadapté pour certains appareils. \newline
 	
-	\item réaliser deux fois le calcul afin de vérifier que l'on obtient deux fois le même calcul. Cela permettrait d'annuler le calcul si une attaque de ce genre était effectuée. Il y aura un impact sur le temps de calcul : vu qu'on réalisera deux fois le même calcul, alors le temps de calcul va doublé par rapport à une implémentation non sécurisée. 
+	\item réaliser deux fois le calcul afin de vérifier que l'on obtient deux fois le même calcul. Cela permettrait d'annuler le calcul si une attaque de ce genre était effectuée. Il y aura un impact sur le temps de calcul : vu qu'on réalisera deux fois le même calcul, alors le temps de calcul va doubler par rapport à une implémentation non sécurisée. 
 \end{itemize}
 
 \end{document}
