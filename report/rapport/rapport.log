@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.31)  16 MAR 2019 21:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.31)  21 MAR 2019 14:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -624,7 +624,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout4 = `rapport.toc'.
 
  [2]
-<../pictures/fauteR15.png, id=105, 344.03531pt x 512.66531pt>
+<../pictures/fauteR15.png, id=119, 344.03531pt x 512.66531pt>
 File: ../pictures/fauteR15.png Graphic file (type png)
 <use ../pictures/fauteR15.png>
 Package pdftex.def Info: ../pictures/fauteR15.png  used on input line 121.
@@ -705,23 +705,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 165--166
  []
 
 [5] [6]
-<../pictures/key_schedule.png, id=142, 686.565pt x 934.49126pt>
+<../pictures/key_schedule.png, id=152, 686.565pt x 934.49126pt>
 File: ../pictures/key_schedule.png Graphic file (type png)
 <use ../pictures/key_schedule.png>
-Package pdftex.def Info: ../pictures/key_schedule.png  used on input line 280.
+Package pdftex.def Info: ../pictures/key_schedule.png  used on input line 278.
 (pdftex.def)             Requested size: 205.97108pt x 280.34953pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 283--285
+Underfull \hbox (badness 10000) in paragraph at lines 281--283
 
  []
 
-<../pictures/C0_D0.png, id=143, 666.23906pt x 94.85437pt>
+<../pictures/C0_D0.png, id=153, 666.23906pt x 94.85437pt>
 File: ../pictures/C0_D0.png Graphic file (type png)
 <use ../pictures/C0_D0.png>
-Package pdftex.def Info: ../pictures/C0_D0.png  used on input line 286.
+Package pdftex.def Info: ../pictures/C0_D0.png  used on input line 284.
 (pdftex.def)             Requested size: 266.49089pt x 37.94107pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 288--289
+Underfull \hbox (badness 10000) in paragraph at lines 286--287
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 289--290
 
  []
 
@@ -730,20 +735,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 291--292
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 293--294
-
- []
-
 [7 <../pictures/key_schedule.png> <../pictures/C0_D0.png>]
-<../pictures/K64.png, id=151, 874.01532pt x 33.12375pt>
+<../pictures/K64.png, id=161, 874.01532pt x 33.12375pt>
 File: ../pictures/K64.png Graphic file (type png)
 <use ../pictures/K64.png>
-Package pdftex.def Info: ../pictures/K64.png  used on input line 295.
+Package pdftex.def Info: ../pictures/K64.png  used on input line 293.
 (pdftex.def)             Requested size: 437.00659pt x 16.56183pt.
 
-Overfull \hbox (0.61446pt too wide) in paragraph at lines 295--295
+Overfull \hbox (0.61446pt too wide) in paragraph at lines 293--293
  [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 295--296
+
  []
 
 
@@ -781,18 +786,82 @@ Underfull \hbox (badness 10000) in paragraph at lines 314--320
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 321--323
+Underfull \hbox (badness 10000) in paragraph at lines 321--322
 
  []
 
 [8 <../pictures/K64.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 337--338
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 335.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 335.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 335.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 335.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 335.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 335.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 344--353
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 344--353
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 344--353
+
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 354.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 354.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 354.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 354.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 354.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 354.
+
 [9]
+Underfull \hbox (badness 10000) in paragraph at lines 372--373
+
+ []
+
+[10]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 348.
+nput line 383.
  (../../app/src/main.c
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 1.
 
@@ -801,31 +870,32 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1.
-) [10]
-(./latex_attack.c [11] [12] [13] [14] [15] [16] [17] [18] [19]) [20]
-(../../app/src/key_schedule.c [21] [22]) [23] (../../app/src/feistel.c [24]
-[25] [26]) [27] (../../app/src/inner_function.c [28] [29] [30] [31] [32])
-[33] (../../app/src/manip_bits.c [34] [35] [36] [37] [38]) [39]
-(../../app/src/errors.c) [40]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 376.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 376.
+) [11]
+(./latex_attack.c [12] [13] [14] [15] [16] [17] [18] [19] [20]) [21]
+(../../app/src/key_schedule.c [22] [23]) [24] (../../app/src/feistel.c [25]
+[26] [27]) [28] (../../app/src/inner_function.c [29] [30] [31] [32] [33])
+[34] (../../app/src/manip_bits.c [35] [36] [37] [38] [39]) [40]
+(../../app/src/errors.c) [41]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 411.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 411.
  (./rapport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 376.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 376.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 411.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 411.
 Package rerunfilecheck Info: File `rapport.out' has not changed.
-(rerunfilecheck)             Checksum: E897AD7183E6C1EFD2AE4FCF95F656C7;1080.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 376.
+(rerunfilecheck)             Checksum: 843102183AE8841F7531853087F6DF29;1294.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 411.
  ) 
 Here is how much of TeX's memory you used:
- 13784 strings out of 494484
- 197609 string characters out of 6174950
+ 13789 strings out of 494484
+ 197676 string characters out of 6174950
  641767 words of memory out of 5000000
- 15663 multiletter control sequences out of 15000+600000
+ 15665 multiletter control sequences out of 15000+600000
  21271 words of font info for 59 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  44i,7n,49p,673b,2024s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/user/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600p
 k> </home/user/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0600.600p
+k> </home/user/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0800.600p
 k> </home/user/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600p
 k> </home/user/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600p
 k> </home/user/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600p
@@ -834,18 +904,20 @@ k> </home/user/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600p
 k> </home/user/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm2074.600p
 k> </home/user/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600p
 k></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmsy9.pfb>
-Output written on rapport.pdf (40 pages, 389925 bytes).
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9
+.pfb>
+Output written on rapport.pdf (41 pages, 415381 bytes).
 PDF statistics:
- 2520 PDF objects out of 2984 (max. 8388607)
- 2120 compressed objects within 22 object streams
- 1574 named destinations out of 1728 (max. 500000)
- 157 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2554 PDF objects out of 2984 (max. 8388607)
+ 2143 compressed objects within 22 object streams
+ 1577 named destinations out of 1728 (max. 500000)
+ 173 words of extra memory for PDF output out of 10000 (max. 10000000)
 
